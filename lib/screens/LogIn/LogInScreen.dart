@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:developer';
 
 import 'package:bike_junction_customer/screens/Dashboard/DashboardPage.dart';
 import 'package:bike_junction_customer/screens/LogIn/contractor/login_contract.dart';
@@ -56,9 +57,9 @@ class _LogInScreenState extends State<LogInScreen>
     setState(() {
       isLoading = true;
     });
+
     loginRequestModel = LoginRequestModel();
     loginRequestModel.customerMobile = mobile;
-    print(mobile);
     loginPresenter.login(loginRequestModel, 'checkcustomermobile');
   }
 
@@ -90,23 +91,23 @@ class _LogInScreenState extends State<LogInScreen>
   }
 
   validate() {
-    mobileNumberController.text.isEmpty
-        ? isValidMobile = true
-        : isValidMobile = false;
+    // mobileNumberController.text.isEmpty
+    //     ? isValidMobile = true
+    //     : isValidMobile = false;
 
-    if (mobileNumberController.text.isEmpty) {
-      isValidMobile = true;
-      setState(() {
-        validMobileMessage = MyStrings.validate_mobile_empty;
-      });
-    }
-    if (mobileNumberController.text.length != 10) {
-      isValidMobile = true;
-      setState(() {
-        validMobileMessage = MyStrings.validate_mobile;
-      });
-    }
-    print(mobileNumberController.text.toString());
+    // if (mobileNumberController.text.isEmpty) {
+    //   isValidMobile = true;
+    //   setState(() {
+    //     validMobileMessage = MyStrings.validate_mobile_empty;
+    //   });
+    // }
+    // if (mobileNumberController.text.length != 10) {
+    //   isValidMobile = true;
+    //   setState(() {
+    //     validMobileMessage = MyStrings.validate_mobile;
+    //   });
+    // }
+    // print(mobileNumberController.text.toString());
     login(mobileNumberController.text.toString());
   }
 
@@ -460,7 +461,6 @@ class _LogInScreenState extends State<LogInScreen>
     setState(() {
       isLoading = false;
     });
-    print(exception);
     ShowMessage().showToast("Something went wrong");
   }
 

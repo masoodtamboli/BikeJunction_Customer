@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:bike_junction_customer/screens/Dashboard/contract/GetPickUpContract.dart';
 import 'package:bike_junction_customer/screens/Dashboard/model/GetPickupDataModel.dart';
 import 'package:bike_junction_customer/screens/Dashboard/presenter/GetPickUpPresenter.dart';
@@ -7,6 +9,7 @@ import 'package:bike_junction_customer/utils/FetchException.dart';
 import 'package:bike_junction_customer/utils/MyColors.dart';
 import 'package:bike_junction_customer/utils/Toast.dart';
 import 'package:bike_junction_customer/utils/sharedPreference/SharedPreference.dart';
+import 'package:bike_junction_customer/utils/shimmer_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 
@@ -25,6 +28,7 @@ class _CurrentPickUpsTabState extends State<CurrentPickUpsTab>
   late CheckInternet checkInternet;
   bool isLoading = false;
   late List<GetPickupData> getPickUpDataList;
+  bool isDataFound = false;
 
   @override
   initState() {
@@ -57,37 +61,46 @@ class _CurrentPickUpsTabState extends State<CurrentPickUpsTab>
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: MediaQuery.of(context).size.height,
-      width: MediaQuery.of(context).size.width,
-      color: MyColors.screen_background,
-      child: ListView.builder(
-          itemCount: getPickUpDataList.length,
-          itemBuilder: (BuildContext context, int index) {
-            return Container(
-              child: Column(
-                children: [
-                  currentPickUpCard(
-                    getPickUpDataList[index],
-                  )
-                ],
-              ),
-            );
-          }),
-      /*child: SingleChildScrollView(
-        child: Column(
-          children: [
-            currentPickUpCard(
-              "MH12PD9735",
-              "Scooty Pep+",
-              "135",
-              "Sat Oct 9 01:10 PM",
-              "Karwenagar,Pune",
-            )
-          ],
-        ),
-      ),*/
-    );
+    return isLoading
+        ? ShimmerWidget()
+        : RefreshIndicator(
+            color: MyColors.app_theme_color,
+            onRefresh: () {
+              return Future.delayed(Duration(seconds: 1), () {
+                setState(() {
+                  checkConnection();
+                });
+              });
+            },
+            child: Stack(
+              children: [
+                Container(
+                  height: MediaQuery.of(context).size.height,
+                  width: MediaQuery.of(context).size.width,
+                  color: MyColors.screen_background,
+                  child: ListView.builder(
+                      itemCount: getPickUpDataList.length,
+                      itemBuilder: (BuildContext context, int index) {
+                        return Container(
+                          child: Column(
+                            children: [
+                              currentPickUpCard(
+                                getPickUpDataList[index],
+                              )
+                            ],
+                          ),
+                        );
+                      }),
+                ),
+                Visibility(
+                  visible: !isDataFound,
+                  child: Center(
+                    child: Text("No Data Found!"),
+                  ),
+                ),
+              ],
+            ),
+          );
   }
 
   //current pickup card
@@ -219,14 +232,26 @@ class _CurrentPickUpsTabState extends State<CurrentPickUpsTab>
 
   @override
   void getPickUpFailure(FetchException exception) {
+    setState(() {
+      isLoading = false;
+    });
+    log("$exception");
     ShowMessage().showToast("Something went wrong");
   }
 
   @override
   void getPickUpSuccess(GetPickupDataModel responseModel) {
+    setState(() {
+      isLoading = false;
+    });
     if (responseModel.status == 1) {
       setState(() {
-        getPickUpDataList.addAll(responseModel.data!);
+        if (responseModel.data != null) {
+          getPickUpDataList.addAll(responseModel.data!);
+          isDataFound = true;
+        } else {
+          isDataFound = false;
+        }
       });
     }
   }

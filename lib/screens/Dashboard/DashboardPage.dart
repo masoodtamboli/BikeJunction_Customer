@@ -1,8 +1,10 @@
 import 'package:bike_junction_customer/screens/AddPickUp/AddPickUpPage.dart';
 import 'package:bike_junction_customer/screens/Dashboard/tabs/CurrentPickUps.dart';
 import 'package:bike_junction_customer/screens/Dashboard/tabs/MyPickUpsTab.dart';
+import 'package:bike_junction_customer/screens/LogIn/LogInScreen.dart';
 import 'package:bike_junction_customer/utils/MyAssets.dart';
 import 'package:bike_junction_customer/utils/MyColors.dart';
+import 'package:bike_junction_customer/utils/sharedPreference/SharedPreference.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 
@@ -35,6 +37,21 @@ class _DashboardPageState extends State<DashboardPage> {
             ],
           ),
           leading: Icon(Icons.person),
+          actions: [
+            IconButton(
+              onPressed: () {
+                SharedPreference.setIsLogin(false);
+                Future.delayed(Duration.zero, () {
+                  Navigator.of(context).pushAndRemoveUntil(
+                      MaterialPageRoute(
+                          builder: (BuildContext context) => LogInScreen()),
+                      (route) => false);
+                });
+              },
+              icon: Icon(Icons.logout_rounded),
+            ),
+            SizedBox(width: 10),
+          ],
         ),
         body: SafeArea(
           child: LayoutBuilder(

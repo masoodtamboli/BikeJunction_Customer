@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:bike_junction_customer/screens/AddPickUp/model/AddPickUpModel.dart';
 import 'package:bike_junction_customer/screens/AddPickUp/model/AllBranchModel.dart';
@@ -24,10 +25,7 @@ class ApiService implements Repository {
 
   @override
   Future<LoginResponseModel> login(loginRequestModel, url) {
-    print("---" + baseUrl + url);
     var newUrl = Uri.parse(baseUrl + url);
-    print(newUrl);
-    print(loginRequestModelToJson(loginRequestModel));
     return http
         .post(newUrl,
             headers: header, body: loginRequestModelToJson(loginRequestModel))
@@ -35,7 +33,6 @@ class ApiService implements Repository {
       if (response.statusCode < 200 || response.statusCode > 300) {
         throw Exception(exceptionMessage);
       }
-      print(response.body.toString());
       return loginResponseModelFromJson(response.body.toString());
     });
   }
@@ -111,11 +108,10 @@ class ApiService implements Repository {
   }
 
   @override
-  Future<GetPickupDataModel> getAllPickUp( url) {
+  Future<GetPickupDataModel> getAllPickUp(url) {
     var newUrl = Uri.parse(baseUrl + url);
 
     return http.post(newUrl).then((http.Response response) {
-      print(response.statusCode);
       if (response.statusCode < 200 || response.statusCode > 300) {
         throw Exception(exceptionMessage);
       }

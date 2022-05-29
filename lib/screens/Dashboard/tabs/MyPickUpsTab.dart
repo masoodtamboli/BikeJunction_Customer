@@ -22,6 +22,7 @@ class _MyPickUpsTabState extends State<MyPickUpsTab>
   late CheckInternet checkInternet;
   bool isLoading = false;
   late List<GetPickupData> getPickUpDataList;
+  bool isDataFound = false;
 
   @override
   initState() {
@@ -32,10 +33,13 @@ class _MyPickUpsTabState extends State<MyPickUpsTab>
   }
 
   checkConnection() {
+    getPickUpDataList.clear();
     checkInternet.check().then((value) {
       if (value) {
         getPickups();
-      } else {}
+      } else {
+        ShowMessage().showToast("Please Check your Internet connection");
+      }
     });
   }
 
@@ -53,38 +57,43 @@ class _MyPickUpsTabState extends State<MyPickUpsTab>
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: MediaQuery.of(context).size.height,
-      width: MediaQuery.of(context).size.width,
-      color: MyColors.screen_background,
-      child: ListView.builder(
-          itemCount: getPickUpDataList.length,
-          itemBuilder: (BuildContext context, int index) {
-            return Container(
-              child: Column(
-                children: [
-                  myPickUpCard(
-                    getPickUpDataList[index],
-                  )
-                ],
-              ),
-            );
-          })
-
-      /*SingleChildScrollView(
-        child: Column(
-          children: [
-            myPickUpCard(
-              "MH12PD9735",
-              "Scooty Pep+",
-              "135",
-              "Sat Oct 9 01:10 PM",
-              "Karwenagar,Pune",
-            )
-          ],
-        ),
-      )*/
-      ,
+    return RefreshIndicator(
+      onRefresh: () {
+        return Future.delayed(Duration(seconds: 1), () {
+          setState(() {
+            checkConnection();
+          });
+        });
+      },
+      child: Stack(
+        children: [
+          Container(
+            height: MediaQuery.of(context).size.height,
+            width: MediaQuery.of(context).size.width,
+            color: MyColors.screen_background,
+            child: ListView.builder(
+              itemCount: getPickUpDataList.length,
+              itemBuilder: (BuildContext context, int index) {
+                return Container(
+                  child: Column(
+                    children: [
+                      myPickUpCard(
+                        getPickUpDataList[index],
+                      )
+                    ],
+                  ),
+                );
+              },
+            ),
+          ),
+          Visibility(
+            visible: !isDataFound,
+            child: Center(
+              child: Text("No Data Found!"),
+            ),
+          ),
+        ],
+      ),
     );
   }
 
@@ -215,7 +224,12 @@ class _MyPickUpsTabState extends State<MyPickUpsTab>
   void getPickUpSuccess(GetPickupDataModel responseModel) {
     if (responseModel.status == 1) {
       setState(() {
-        getPickUpDataList.addAll(responseModel.data!);
+        if (responseModel.data != null) {
+          getPickUpDataList.addAll(responseModel.data!);
+          isDataFound = true;
+        } else {
+          isDataFound = false;
+        }
       });
     }
   }

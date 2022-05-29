@@ -8,9 +8,11 @@ import 'package:bike_junction_customer/utils/sharedPreference/SharedPreference.d
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:sizer/sizer.dart';
+
 void main() {
   runApp(MyApp());
 }
+
 Map<int, Color> color =
 {
   50:Color.fromRGBO(25,53,119, .1),

@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:bike_junction_customer/dependencyInjection/injector.dart';
 import 'package:bike_junction_customer/screens/AddPickUp/contract/AddPickUpContract.dart';
 import 'package:bike_junction_customer/screens/AddPickUp/model/AddPickUpModel.dart';
@@ -18,8 +20,10 @@ class GetPickUpPresenter {
     _repository
         .getAllPickUp(url)
         .then((value) => _view.getPickUpSuccess(value))
-        .onError((error, stackTrace) =>
-            _view.getPickUpFailure(FetchException(error.toString())));
+        .onError((error, stackTrace) {
+      log("$stackTrace");
+      _view.getPickUpFailure(FetchException(error.toString()));
+    });
   }
 
   void getMyPickups(url) {
