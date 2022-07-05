@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:bike_junction_customer/dependencyInjection/injector.dart';
 import 'package:bike_junction_customer/screens/RegistrationPage/contract/registration_contract.dart';
 import 'package:bike_junction_customer/utils/FetchException.dart';
@@ -15,7 +17,9 @@ class RegistrationPresenter {
     _repository
         .signup(registrationModel, url)
         .then((value) => _view.registrationSuccess(value))
-        .onError((error, stackTrace) =>
-            _view.registrationFailure(FetchException(error.toString())));
+        .onError((error, stackTrace) {
+      log("$error     $stackTrace");
+      _view.registrationFailure(FetchException(error.toString()));
+    });
   }
 }

@@ -1,3 +1,4 @@
+import 'dart:developer';
 import 'dart:io';
 
 import 'package:bike_junction_customer/screens/AddPickUp/contract/AddPickUpContract.dart';
@@ -15,7 +16,7 @@ import 'package:bike_junction_customer/utils/ImageViewPage.dart';
 import 'package:bike_junction_customer/utils/MyColors.dart';
 import 'package:bike_junction_customer/utils/Toast.dart';
 import 'package:bike_junction_customer/utils/sharedPreference/SharedPreference.dart';
-import 'package:bike_junction_customer/utils/shimmer_widget.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
@@ -240,21 +241,15 @@ class _AddPickUpPageState extends State<AddPickUpPage>
     //
     // }
     addPickUp();
-    print("valid data");
   }
 
   Future captureImage() async {
     final pickedFile = await imagePicker.getImage(source: ImageSource.camera);
-    print("path: ${_image.path}");
     var fileName = (pickedFile?.path.split('/').last);
-
-    print(fileName);
-    //print(filePath);
     setState(() {
       isFileSelect = true;
       selectedImgExtension = fileName!.split(".")[1];
       _image = File(pickedFile!.path);
-      print("path: ${_image.path}");
     });
     var base64ImageExtension =
         " $selectedImgExtension,${Converter.convertIntoBase64(_image)}";
@@ -276,14 +271,6 @@ class _AddPickUpPageState extends State<AddPickUpPage>
   }
 
   addImageIntoList(File image, String base64) {
-    // if (cameraList.length == 2) {
-    //   cameraList = [];
-    //   base64List = [];
-    //   setState(() {
-    //     cameraList.add(image);
-    //     base64List.add(base64);
-    //   });
-    // } else {
     setState(() {
       cameraList.add(image);
       base64List.add(base64);
@@ -330,7 +317,10 @@ class _AddPickUpPageState extends State<AddPickUpPage>
       ),
       body: SafeArea(
         child: isLoading
-            ? ShimmerWidget()
+            ? SpinKitCircle(
+                color: Colors.black,
+                size: 50.0,
+              )
             : LayoutBuilder(
                 builder: (BuildContext context, BoxConstraints constraints) {
                 return SingleChildScrollView(
@@ -909,9 +899,8 @@ class _AddPickUpPageState extends State<AddPickUpPage>
     setState(() {
       isLoading = false;
     });
-    if (responseModel.status == 1) {
+    if (responseModel.status == 200) {
       allBranchList.addAll(responseModel.data!);
-      //allBranchList.removeAt(0);
       ShowMessage().showToast("Success");
     }
   }

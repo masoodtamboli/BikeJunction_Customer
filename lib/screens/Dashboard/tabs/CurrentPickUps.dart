@@ -11,6 +11,7 @@ import 'package:bike_junction_customer/utils/Toast.dart';
 import 'package:bike_junction_customer/utils/sharedPreference/SharedPreference.dart';
 import 'package:bike_junction_customer/utils/shimmer_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:sizer/sizer.dart';
 
 class CurrentPickUpsTab extends StatefulWidget {
@@ -62,7 +63,10 @@ class _CurrentPickUpsTabState extends State<CurrentPickUpsTab>
   @override
   Widget build(BuildContext context) {
     return isLoading
-        ? ShimmerWidget()
+        ? SpinKitCircle(
+            color: Colors.black,
+            size: 50.0,
+          )
         : RefreshIndicator(
             color: MyColors.app_theme_color,
             onRefresh: () {

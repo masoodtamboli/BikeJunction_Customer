@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:bike_junction_customer/screens/LogIn/LogInScreen.dart';
 import 'package:bike_junction_customer/screens/RegistrationPage/contract/registration_contract.dart';
 import 'package:bike_junction_customer/screens/RegistrationPage/model/registration_model.dart';
@@ -22,7 +24,7 @@ class _RegistrationPageState extends State<RegistrationPage>
   TextEditingController customerNameController = TextEditingController();
   TextEditingController customerContactController = TextEditingController();
   TextEditingController customerAddressController = TextEditingController();
-  TextEditingController customerAreaController = TextEditingController();
+  TextEditingController customerEmailController = TextEditingController();
   TextEditingController customerPinCodeController = TextEditingController();
   late RegistrationPresenter registrationPresenter;
   late RegistrationRequestModel registrationRequestModel;
@@ -30,6 +32,13 @@ class _RegistrationPageState extends State<RegistrationPage>
   bool isValidMobile = false;
   late String validMobileMessage;
   late CheckInternet checkInternet;
+
+  //Error texts
+  String? nameError;
+  String? numberError;
+  String? addressError;
+  String? pinError;
+  String? emailError;
 
   @override
   initState() {
@@ -42,18 +51,19 @@ class _RegistrationPageState extends State<RegistrationPage>
     registrationPresenter = RegistrationPresenter(this);
   }
 
-  signup(String name, String mobile, String address, String pincode) {
+  signup(String name, String mobile, String address, String pincode,
+      String email) {
     setState(() {
       isLoading = true;
     });
+    String newMobile = "91" + mobile;
     registrationRequestModel = RegistrationRequestModel();
     registrationRequestModel.name = name;
-    registrationRequestModel.mobile = mobile;
+    registrationRequestModel.mobile = newMobile;
     registrationRequestModel.address = address;
     registrationRequestModel.pincode = pincode;
-    registrationRequestModel.customer_email = "";
-    registrationRequestModel.vehicleno = "";
-    registrationRequestModel.branch_id = "1";
+    registrationRequestModel.customerEmail = email;
+    registrationRequestModel.branchId = "1";
 
     registrationPresenter.registration(registrationRequestModel, 'putcustomer');
   }
@@ -66,6 +76,7 @@ class _RegistrationPageState extends State<RegistrationPage>
           customerContactController.text.trim().toString(),
           customerAddressController.text.trim().toString(),
           customerPinCodeController.text.trim().toString(),
+          customerEmailController.text.trim().toString(),
         );
       } else {}
     });
@@ -94,9 +105,6 @@ class _RegistrationPageState extends State<RegistrationPage>
         child: GestureDetector(
           onTap: () {
             checkConnection();
-            //validate();
-            /* Navigator.of(context)
-                .push(MaterialPageRoute(builder: (context) => DashboardPage()));*/
           },
           child: Container(
             height: 50,
@@ -128,9 +136,9 @@ class _RegistrationPageState extends State<RegistrationPage>
             //Title
             Column(
               children: [
-                Image.asset(MyAssets.app_logo),
+                Image.asset(MyAssets.app_logo_circle),
                 Text(
-                  "Customer App",
+                  "Customer Registeration",
                   style: TextStyle(
                       fontSize: 18.sp,
                       color: MyColors.app_theme_color,
@@ -139,7 +147,7 @@ class _RegistrationPageState extends State<RegistrationPage>
                 ),
               ],
             ),
-            SizedBox(height: 3.h),
+            SizedBox(height: 5.h),
             Text(
               "Register to continue",
               style: TextStyle(
@@ -166,6 +174,7 @@ class _RegistrationPageState extends State<RegistrationPage>
             child: TextField(
               controller: customerNameController,
               decoration: new InputDecoration(
+                errorText: nameError,
                 border: new OutlineInputBorder(
                     borderSide:
                         new BorderSide(color: MyColors.app_theme_color)),
@@ -178,11 +187,13 @@ class _RegistrationPageState extends State<RegistrationPage>
               ),
             ),
           ),
+          SizedBox(height: 10),
           Container(
             height: 80,
             child: TextField(
               controller: customerContactController,
               decoration: new InputDecoration(
+                errorText: numberError,
                 border: new OutlineInputBorder(
                     borderSide:
                         new BorderSide(color: MyColors.app_theme_color)),
@@ -195,11 +206,13 @@ class _RegistrationPageState extends State<RegistrationPage>
               ),
             ),
           ),
+          SizedBox(height: 10),
           Container(
             height: 80,
             child: TextField(
               controller: customerAddressController,
               decoration: new InputDecoration(
+                errorText: addressError,
                 border: new OutlineInputBorder(
                     borderSide:
                         new BorderSide(color: MyColors.app_theme_color)),
@@ -212,28 +225,32 @@ class _RegistrationPageState extends State<RegistrationPage>
               ),
             ),
           ),
+          SizedBox(height: 10),
           Container(
             height: 80,
             child: TextField(
-              controller: customerAreaController,
+              controller: customerEmailController,
               decoration: new InputDecoration(
+                errorText: emailError,
                 border: new OutlineInputBorder(
                     borderSide:
                         new BorderSide(color: MyColors.app_theme_color)),
-                hintText: 'Area',
-                labelText: 'Area',
+                hintText: 'Email Id',
+                labelText: 'Email Id',
                 prefixIcon: const Icon(
-                  Icons.location_city,
+                  Icons.email,
                   color: Colors.black,
                 ),
               ),
             ),
           ),
+          SizedBox(height: 10),
           Container(
             height: 70,
             child: TextField(
               controller: customerPinCodeController,
               decoration: new InputDecoration(
+                errorText: pinError,
                 border: new OutlineInputBorder(
                     borderSide:
                         new BorderSide(color: MyColors.app_theme_color)),
@@ -264,14 +281,39 @@ class _RegistrationPageState extends State<RegistrationPage>
     setState(() {
       isLoading = false;
     });
-    if (responseModel.status == 1) {
+    if (responseModel.status == 200) {
+      ShowMessage().showToast(responseModel.message!);
       Navigator.of(context).pop();
-
       Navigator.of(context).pushReplacement(
           MaterialPageRoute(builder: (context) => LogInScreen()));
-      ShowMessage().showToast("Registration Successful");
+    } else if (responseModel.status == 409) {
+      if (responseModel.objectError!.customerName != null) {
+        setState(() {
+          nameError = responseModel.objectError!.customerName!;
+        });
+      }
+      if (responseModel.objectError!.customerMobile != null) {
+        setState(() {
+          numberError = responseModel.objectError!.customerMobile!;
+        });
+      }
+      if (responseModel.objectError!.customerPincode != null) {
+        setState(() {
+          pinError = responseModel.objectError!.customerPincode!;
+        });
+      }
+      if (responseModel.objectError!.customerAddress != null) {
+        setState(() {
+          addressError = responseModel.objectError!.customerAddress!;
+        });
+      }
+      if (responseModel.objectError!.customerEmail != null) {
+        setState(() {
+          emailError = responseModel.objectError!.customerEmail!;
+        });
+      }
     } else {
-      ShowMessage().showToast("Registration Failed");
+      ShowMessage().showToast(responseModel.error!);
     }
   }
 }

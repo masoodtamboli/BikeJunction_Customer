@@ -18,7 +18,6 @@ class LoginPresenter {
         .login(loginRequestModel, url)
         .then((value) => _view.loginSuccess(value))
         .onError((error, stackTrace) {
-      log("$stackTrace");
       _view.loginFailure(FetchException(error.toString()));
     });
   }

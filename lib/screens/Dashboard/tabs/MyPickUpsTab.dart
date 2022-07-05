@@ -7,6 +7,7 @@ import 'package:bike_junction_customer/utils/MyColors.dart';
 import 'package:bike_junction_customer/utils/Toast.dart';
 import 'package:bike_junction_customer/utils/sharedPreference/SharedPreference.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:sizer/sizer.dart';
 
 class MyPickUpsTab extends StatefulWidget {
@@ -57,44 +58,49 @@ class _MyPickUpsTabState extends State<MyPickUpsTab>
 
   @override
   Widget build(BuildContext context) {
-    return RefreshIndicator(
-      onRefresh: () {
-        return Future.delayed(Duration(seconds: 1), () {
-          setState(() {
-            checkConnection();
-          });
-        });
-      },
-      child: Stack(
-        children: [
-          Container(
-            height: MediaQuery.of(context).size.height,
-            width: MediaQuery.of(context).size.width,
-            color: MyColors.screen_background,
-            child: ListView.builder(
-              itemCount: getPickUpDataList.length,
-              itemBuilder: (BuildContext context, int index) {
-                return Container(
-                  child: Column(
-                    children: [
-                      myPickUpCard(
-                        getPickUpDataList[index],
-                      )
-                    ],
+    return isLoading
+        ? SpinKitCircle(
+            color: Colors.black,
+            size: 50.0,
+          )
+        : RefreshIndicator(
+            onRefresh: () {
+              return Future.delayed(Duration(seconds: 1), () {
+                setState(() {
+                  checkConnection();
+                });
+              });
+            },
+            child: Stack(
+              children: [
+                Container(
+                  height: MediaQuery.of(context).size.height,
+                  width: MediaQuery.of(context).size.width,
+                  color: MyColors.screen_background,
+                  child: ListView.builder(
+                    itemCount: getPickUpDataList.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      return Container(
+                        child: Column(
+                          children: [
+                            myPickUpCard(
+                              getPickUpDataList[index],
+                            )
+                          ],
+                        ),
+                      );
+                    },
                   ),
-                );
-              },
+                ),
+                Visibility(
+                  visible: !isDataFound,
+                  child: Center(
+                    child: Text("No Data Found!"),
+                  ),
+                ),
+              ],
             ),
-          ),
-          Visibility(
-            visible: !isDataFound,
-            child: Center(
-              child: Text("No Data Found!"),
-            ),
-          ),
-        ],
-      ),
-    );
+          );
   }
 
   Widget myPickUpCard(
@@ -217,11 +223,17 @@ class _MyPickUpsTabState extends State<MyPickUpsTab>
 
   @override
   void getPickUpFailure(FetchException exception) {
+    setState(() {
+      isLoading = false;
+    });
     ShowMessage().showToast("Something went wrong");
   }
 
   @override
   void getPickUpSuccess(GetPickupDataModel responseModel) {
+    setState(() {
+      isLoading = false;
+    });
     if (responseModel.status == 1) {
       setState(() {
         if (responseModel.data != null) {

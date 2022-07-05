@@ -21,6 +21,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:sizer/sizer.dart';
+import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 
 class LogInScreen extends StatefulWidget {
   const LogInScreen({Key? key}) : super(key: key);
@@ -37,11 +38,12 @@ class _LogInScreenState extends State<LogInScreen>
   String validMobileMessage = MyStrings.validate_mobile_empty;
   bool isValidMobile = false;
   bool isLoading = false;
+  String? _errorText;
   late CheckInternet checkInternet;
 
   late List<Data> loginList;
   late List<CustomerData> customerDataList;
-  late String otpToken;
+  late String customerId;
 
   late LoginPresenter loginPresenter;
   late VerifyOtpPresenter verifyOtpPresenter;
@@ -63,14 +65,13 @@ class _LogInScreenState extends State<LogInScreen>
     loginPresenter.login(loginRequestModel, 'checkcustomermobile');
   }
 
-  verifyOtp(String mobileNo, String otp, String token) {
+  verifyOtp(String otp) {
     setState(() {
       isLoading = true;
     });
     verifyOtpRequestModel = VerifyOtpRequestModel();
-    verifyOtpRequestModel.customerMobile = mobileNo;
     verifyOtpRequestModel.otpSms = otp;
-    verifyOtpRequestModel.otpToken = token;
+    verifyOtpRequestModel.customerId = customerId;
     verifyOtpPresenter.verify(verifyOtpRequestModel, 'checkcustomerotp');
   }
 
@@ -79,39 +80,15 @@ class _LogInScreenState extends State<LogInScreen>
       if (value) {
         validate();
       } else {
-        // DialogHelper.noInternet(
-        //     context,
-        //     MyAssets.noInternetIcon,
-        //     MyStrings.btn_retry,
-        //     MyStrings.btn_cancel,
-        //     onClickRetry,
-        //     onClickCancel);
+        ShowMessage().showToast("No Internet Connection!");
       }
     });
   }
 
   validate() {
-    // mobileNumberController.text.isEmpty
-    //     ? isValidMobile = true
-    //     : isValidMobile = false;
-
-    // if (mobileNumberController.text.isEmpty) {
-    //   isValidMobile = true;
-    //   setState(() {
-    //     validMobileMessage = MyStrings.validate_mobile_empty;
-    //   });
-    // }
-    // if (mobileNumberController.text.length != 10) {
-    //   isValidMobile = true;
-    //   setState(() {
-    //     validMobileMessage = MyStrings.validate_mobile;
-    //   });
-    // }
-    // print(mobileNumberController.text.toString());
     login(mobileNumberController.text.toString());
   }
 
-  TextEditingController textEditingController = TextEditingController();
   late StreamController<ErrorAnimationType> errorController;
   var onTapRecognizer;
 
@@ -125,13 +102,6 @@ class _LogInScreenState extends State<LogInScreen>
         Navigator.pop(context);
       };
     errorController = StreamController<ErrorAnimationType>();
-  }
-
-  @override
-  void dispose() {
-    errorController.close();
-
-    super.dispose();
   }
 
   @override
@@ -167,22 +137,12 @@ class _LogInScreenState extends State<LogInScreen>
           children: [
             SizedBox(height: 5.h),
             //Title
-            Container(
-              color: MyColors.app_theme_color,
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Column(
-                  children: [
-                    Image.asset(MyAssets.app_logo),
-                    // Text(
-                    //   "Customer App",
-                    //   style: TextStyle(fontSize: 18.sp,
-                    //       color: MyColors.app_theme_color,
-                    //       fontStyle: FontStyle.normal,
-                    //   fontWeight: FontWeight.bold),
-                    // ),
-                  ],
-                ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                children: [
+                  Image.asset(MyAssets.app_logo_circle),
+                ],
               ),
             ),
             SizedBox(height: 15.h),
@@ -198,40 +158,36 @@ class _LogInScreenState extends State<LogInScreen>
                       fontStyle: FontStyle.italic),
                 ),
                 SizedBox(height: 1.h),
-                Row(
-                  children: [
-                    Expanded(
-                      flex: 0,
-                      child: Container(
-                        height: 8.h,
-                        child: Padding(
-                          padding: EdgeInsets.only(top: 2.h, right: 1.h),
-                          child: Text(
-                            MyStrings.country_code,
-                          ),
+                Container(
+                  margin: EdgeInsets.fromLTRB(0, 20, 0, 20),
+                  width: 85.w,
+                  child: TextFormField(
+                    controller: mobileNumberController,
+                    keyboardType: TextInputType.number,
+                    decoration: InputDecoration(
+                      errorText: _errorText,
+                      prefixIcon: Padding(
+                        padding: EdgeInsets.only(left: 20),
+                        child: Text(
+                          "+91 ",
+                          style: TextStyle(fontSize: 11.sp),
                         ),
                       ),
-                    ),
-                    Expanded(
-                      flex: 1,
-                      child: Container(
-                        height: 8.h,
-                        child: TextField(
-                          controller: mobileNumberController,
-                          maxLength: 10,
-                          keyboardType: TextInputType.phone,
-                          decoration: InputDecoration(
-                            hintStyle:
-                                TextStyle(color: MyColors.grey_text_color),
-                            hintText: MyStrings.enter_mobile_no_hint,
-                            errorText:
-                                isValidMobile ? validMobileMessage : null,
-                            counterText: "",
-                          ),
-                        ),
+                      prefixIconConstraints:
+                          BoxConstraints(minWidth: 0, minHeight: 0),
+                      contentPadding: EdgeInsets.only(left: 20),
+                      border: OutlineInputBorder(
+                        borderSide: BorderSide(color: MyColors.app_theme_color),
+                        borderRadius: BorderRadius.circular(20.0),
                       ),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: MyColors.app_theme_color),
+                        borderRadius: BorderRadius.circular(20.0),
+                      ),
+                      hintText: "Mobile number",
                     ),
-                  ],
+                    onChanged: (value) {},
+                  ),
                 ),
                 SizedBox(height: 2.h),
                 Padding(
@@ -263,8 +219,10 @@ class _LogInScreenState extends State<LogInScreen>
                 SizedBox(height: 2.h),
                 GestureDetector(
                   onTap: () {
+                    setState(() {
+                      isTimeEnd = false;
+                    });
                     checkConnection();
-                    //displayOTPBottomSheet(context, "9011547660");
                   },
                   child: Container(
                     height: 8.h,
@@ -289,14 +247,14 @@ class _LogInScreenState extends State<LogInScreen>
   }
 
   // Display Bottom sheet function
-  void displayOTPBottomSheet(BuildContext context, String text) {
+  void displayOTPBottomSheet(BuildContext context) {
     showModalBottomSheet(
         context: context,
         isScrollControlled: true,
         enableDrag: false,
         isDismissible: false,
         builder: (ctx) {
-          return otpBottomSheet(text);
+          return otpBottomSheet();
         });
   }
 
@@ -305,8 +263,7 @@ class _LogInScreenState extends State<LogInScreen>
     borderRadius: BorderRadius.circular(5.0),
   );
 
-  // Bottom Sheet Model
-  Widget otpBottomSheet(String mobile) {
+  Widget otpBottomSheet() {
     return StatefulBuilder(
       builder: (BuildContext context, StateSetter setState) {
         return Padding(
@@ -317,75 +274,65 @@ class _LogInScreenState extends State<LogInScreen>
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  // Lottie.asset(MyAssets.otp_bottomsheet_lottie,
-                  //     height: 100.0, width: 100.0),
                   Text("Verify OTP",
                       style: TextStyle(
                           fontSize: 20.0, fontWeight: FontWeight.bold)),
                   SizedBox(
                     height: 10.0,
                   ),
-                  Text("Enter otp",
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontSize: 15.0,
-                        color: Colors.grey,
-                      )),
+
                   Padding(
                     padding: EdgeInsets.only(top: 8.0, bottom: 12.0),
-                    child: Text("+91" + mobile,
-                        textAlign: TextAlign.center,
+                    child: RichText(
+                      text: TextSpan(
+                        text: "Code is sent to: ",
                         style: TextStyle(
                           fontSize: 15.0,
-                          color: Colors.black,
-                        )),
+                          color: Colors.grey,
+                        ),
+                        children: [
+                          TextSpan(
+                            text: "+91 ${mobileNumberController.text}",
+                            style:
+                                TextStyle(fontSize: 15.0, color: Colors.black),
+                          ),
+                        ],
+                      ),
+                    ),
                   ),
-                  // OTP Entry Text Field
                   Padding(
                       padding: EdgeInsets.only(right: 5.0, left: 5.0),
-                      child: PinCodeTextField(
-                        length: 6,
-                        obscureText: false,
+                      child: OtpTextField(
+                        numberOfFields: 6,
+                        borderColor: MyColors.app_theme_color,
                         keyboardType: TextInputType.number,
-                        animationType: AnimationType.fade,
-                        pinTheme: PinTheme(
-                            shape: PinCodeFieldShape.box,
-                            borderRadius: BorderRadius.circular(5),
-                            fieldHeight: 50,
-                            fieldWidth: 40,
-                            selectedColor: MyColors.app_theme_color,
-                            selectedFillColor: Colors.white,
-                            inactiveFillColor: MyColors.white,
-                            inactiveColor: MyColors.black,
-                            activeFillColor: Colors.white,
-                            activeColor: MyColors.black),
-                        animationDuration: Duration(milliseconds: 300),
-                        // backgroundColor:,
-                        enableActiveFill: true,
-                        errorAnimationController: errorController,
-                        controller: textEditingController,
-                        onCompleted: (otp) {
-                          print("Completed");
-                          //Navigator.of(context).push(MaterialPageRoute(builder: (context)=> RegistrationPage()));
-                          verifyOtp(mobile, otp, otpToken);
+                        showFieldAsBox: true,
+                        fieldWidth: 12.w,
+                        cursorColor: MyColors.app_theme_color,
+                        focusedBorderColor: MyColors.app_theme_color,
+                        decoration: InputDecoration(),
+                        onSubmit: (otp) {
+                          verifyOtp(otp);
                         },
-                        onChanged: (value) {
-                          print(value);
-                          setState(() {
-                            // currentText = value;
-                          });
-                        },
-                        beforeTextPaste: (text) {
-                          print("Allowing to paste $text");
-                          //if you return true then it will show the paste confirmation dialog. Otherwise if false, then nothing will happen.
-                          //but you can show anything you want here, like your pop up saying wrong paste format or etc
-                          return false;
-                        },
-                        appContext: context,
                       )),
 
                   SizedBox(
                     height: 10.0,
+                  ),
+                  RichText(
+                    text: TextSpan(
+                      text: "Didn't recieve code? ",
+                      style: TextStyle(
+                        fontSize: 15.0,
+                        color: Colors.grey,
+                      ),
+                      children: [
+                        TextSpan(
+                          text: "Request again in ",
+                          style: TextStyle(fontSize: 15.0, color: Colors.black),
+                        ),
+                      ],
+                    ),
                   ),
                   // Timer
                   TweenAnimationBuilder<Duration>(
@@ -419,12 +366,6 @@ class _LogInScreenState extends State<LogInScreen>
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text(
-                            "Resend OTP : ",
-                            style: TextStyle(
-                              fontSize: 16.0,
-                            ),
-                          ),
                           GestureDetector(
                             onTap: () {
                               resendOtp(mobileNumberController.text
@@ -469,16 +410,20 @@ class _LogInScreenState extends State<LogInScreen>
     setState(() {
       isLoading = false;
     });
-    if (responseModel.status == 1) {
+    if (responseModel.status == 200) {
+      ShowMessage().showToast(responseModel.message!);
       setState(() {
-        otpToken = responseModel.data!.otpToken!;
+        customerId = responseModel.data!.customerId!;
       });
-      //loginList.add(responseModel.data!);
-      displayOTPBottomSheet(
-          context, responseModel.data!.customerMobile!.toString());
-      ShowMessage().showToast("Success");
-    } else if (responseModel.status == 0) {
-      ShowMessage().showToast("Unknown mobile number");
+      displayOTPBottomSheet(context);
+    } else if (responseModel.status == 403) {
+      ShowMessage().showToast(responseModel.error!);
+    } else if (responseModel.status == 409) {
+      setState(() {
+        _errorText = responseModel.objectError!.mobileNo;
+      });
+    } else {
+      ShowMessage().showToast(responseModel.error!);
     }
   }
 
@@ -495,7 +440,7 @@ class _LogInScreenState extends State<LogInScreen>
     setState(() {
       isLoading = false;
     });
-    if (responseModel.status == 1) {
+    if (responseModel.status == 200) {
       Navigator.of(context).pop();
       setState(() {
         SharedPreference.setIsLogin(true);

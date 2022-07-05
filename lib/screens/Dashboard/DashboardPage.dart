@@ -2,11 +2,9 @@ import 'package:bike_junction_customer/screens/AddPickUp/AddPickUpPage.dart';
 import 'package:bike_junction_customer/screens/Dashboard/tabs/CurrentPickUps.dart';
 import 'package:bike_junction_customer/screens/Dashboard/tabs/MyPickUpsTab.dart';
 import 'package:bike_junction_customer/screens/LogIn/LogInScreen.dart';
-import 'package:bike_junction_customer/utils/MyAssets.dart';
 import 'package:bike_junction_customer/utils/MyColors.dart';
 import 'package:bike_junction_customer/utils/sharedPreference/SharedPreference.dart';
 import 'package:flutter/material.dart';
-import 'package:sizer/sizer.dart';
 
 class DashboardPage extends StatefulWidget {
   const DashboardPage({Key? key}) : super(key: key);
@@ -103,8 +101,6 @@ class _DashboardPageState extends State<DashboardPage> {
         floatingActionButton: GestureDetector(
           onTap: () {
             _navigateAndDisplaySelection(context);
-            /*Navigator.of(context)
-                .push(MaterialPageRoute(builder: (context) => AddPickUpPage()));*/
           },
           child: CircleAvatar(
             radius: 25,

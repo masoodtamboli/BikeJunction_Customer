@@ -12,17 +12,15 @@ class RegistrationRequestModel {
       this.mobile,
       this.address,
       this.pincode,
-      this.vehicleno,
-      this.customer_email,
-      this.branch_id});
+      this.customerEmail,
+      this.branchId});
 
   String? name;
   String? mobile;
   String? address;
   String? pincode;
-  String? vehicleno;
-  String? customer_email;
-  String? branch_id;
+  String? customerEmail;
+  String? branchId;
 
   factory RegistrationRequestModel.fromJson(Map<String, dynamic> json) =>
       RegistrationRequestModel(
@@ -30,9 +28,8 @@ class RegistrationRequestModel {
         mobile: json["mobile"],
         address: json["address"],
         pincode: json["pincode"],
-        vehicleno: json["vehicle_no"],
-        customer_email: json["customer_email"],
-        branch_id: json["branch_id"],
+        customerEmail: json["email"],
+        branchId: json["branch_id"],
       );
 
   Map<String, dynamic> toJson() => {
@@ -40,9 +37,8 @@ class RegistrationRequestModel {
         "mobile": mobile,
         "address": address,
         "pincode": pincode,
-        "vehicle_no": vehicleno,
-        "customer_email": customer_email,
-        "branch_id": branch_id,
+        "email": customerEmail,
+        "branch_id": branchId,
       };
 }
 
@@ -54,63 +50,148 @@ String registrationModelToJson(RegistrationModel data) =>
 
 class RegistrationModel {
   RegistrationModel({
-    int? status,
-    String? error,
-    Messages? messages,
-  }) {
-    _status = status;
-    _error = error;
-    _messages = messages;
+    this.status,
+    this.error,
+    this.objectError,
+    this.message,
+    this.data,
+  });
+
+  int? status;
+  String? error;
+  Error? objectError;
+  String? message;
+  Data? data;
+
+  factory RegistrationModel.fromJson(dynamic json) {
+    if (json["status"] == 200) {
+      return RegistrationModel(
+        status: json["status"],
+        message: json["message"],
+        data: Data.fromJson(json["data"]),
+      );
+    } else if (json["status"] == 403) {
+      return RegistrationModel(
+        status: json["status"],
+        objectError: Error.fromJson(json["error"]),
+      );
+    } else if (json["status"] == 409) {
+      return RegistrationModel(
+        status: json["status"],
+        objectError: Error.fromJson(json["error"]),
+      );
+    } else {
+      return RegistrationModel(
+        status: json["status"],
+        error: "Something went wrong!",
+      );
+    }
   }
-
-  RegistrationModel.fromJson(dynamic json) {
-    _status = json['status'];
-    _error = json['error'];
-    _messages =
-        json['messages'] != null ? Messages.fromJson(json['messages']) : null;
-  }
-
-  int? _status;
-  String? _error;
-  Messages? _messages;
-
-  int? get status => _status;
-
-  String? get error => _error;
-
-  Messages? get messages => _messages;
 
   Map<String, dynamic> toJson() {
-    final map = <String, dynamic>{};
-    map['status'] = _status;
-    map['error'] = _error;
-    if (_messages != null) {
-      map['messages'] = _messages?.toJson();
+    if (status == 200) {
+      return {
+        "status": status,
+        "message": message,
+        "data": data!.toJson(),
+      };
+    } else if (status == 403) {
+      return {
+        "status": status,
+        "error": objectError,
+      };
+    } else if (status == 409) {
+      return {
+        "status": status,
+        "error": objectError,
+      };
+    } else {
+      return {
+        "status": status,
+        "error": "Something went wrong!",
+      };
     }
-    return map;
   }
 }
 
-/// success : "Customer created successfully"
+class Error {
+  Error({
+    this.customerName,
+    this.customerMobile,
+    this.customerAddress,
+    this.customerPincode,
+    this.customerEmail,
+    this.branchId,
+  });
 
-class Messages {
-  Messages({
-    String? success,
-  }) {
-    _success = success;
-  }
+  String? customerName;
+  String? customerMobile;
+  String? customerAddress;
+  String? customerPincode;
+  String? customerVehicleNo;
+  String? customerEmail;
+  String? branchId;
 
-  Messages.fromJson(dynamic json) {
-    _success = json['success'];
-  }
+  factory Error.fromJson(Map<String, dynamic> json) => Error(
+        customerName: json["customer_name"],
+        customerMobile: json["customer_mobile"],
+        customerAddress: json["customer_address"],
+        customerPincode: json["customer_pincode"],
+        customerEmail: json["customer_email"],
+        branchId: json["branch_id"],
+      );
 
-  String? _success;
+  Map<String, dynamic> toJson() => {
+        "customer_name": customerName,
+        "customer_mobile": customerMobile,
+        "customer_address": customerAddress,
+        "customer_pincode": customerPincode,
+        "customer_vehicleno": customerVehicleNo,
+        "customer_email": customerEmail,
+        "branch_id": branchId,
+      };
+}
 
-  String? get success => _success;
+class Data {
+  Data({
+    this.customerName,
+    this.customerMobile,
+    this.customerAddress,
+    this.customerPincode,
+    this.customerVehicleNo,
+    this.customerEmail,
+    this.branchId,
+    this.id,
+  });
 
-  Map<String, dynamic> toJson() {
-    final map = <String, dynamic>{};
-    map['success'] = _success;
-    return map;
-  }
+  String? customerName;
+  String? customerMobile;
+  String? customerAddress;
+  String? customerPincode;
+  String? customerVehicleNo;
+  String? customerEmail;
+  String? branchId;
+  int? id;
+
+  factory Data.fromJson(Map<String, dynamic> json) => Data(
+        customerName: json["customer_name"],
+        customerMobile: json["customer_mobile"],
+        customerAddress: json["customer_address"],
+        customerPincode: json["customer_pincode"],
+        customerVehicleNo: json["customer_vehicleno"],
+        customerEmail: json["customer_email"],
+        branchId: json["branch_id"],
+        id: json["id"],
+      );
+
+  Map<String, dynamic> toJson() => {
+        "customer_name": customerName,
+        "customer_mobile": customerMobile,
+        "customer_address": customerAddress,
+        "customer_pincode": customerPincode,
+        "customer_vehicleno": customerVehicleNo,
+        "customer_email": customerEmail,
+        "branch_id": branchId,
+        "id": id,
+      };
 }

@@ -13,18 +13,17 @@ void main() {
   runApp(MyApp());
 }
 
-Map<int, Color> color =
-{
-  50:Color.fromRGBO(25,53,119, .1),
-  100:Color.fromRGBO(25,53,119, .2),
-  200:Color.fromRGBO(25,53,119, .3),
-  300:Color.fromRGBO(25,53,119, .4),
-  400:Color.fromRGBO(25,53,119, .5),
-  500:Color.fromRGBO(25,53,119, .6),
-  600:Color.fromRGBO(25,53,119, .7),
-  700:Color.fromRGBO(25,53,119, .8),
-  800:Color.fromRGBO(25,53,119, .9),
-  900:Color.fromRGBO(25,53,119, 1),
+Map<int, Color> color = {
+  50: Color.fromRGBO(25, 53, 119, .1),
+  100: Color.fromRGBO(25, 53, 119, .2),
+  200: Color.fromRGBO(25, 53, 119, .3),
+  300: Color.fromRGBO(25, 53, 119, .4),
+  400: Color.fromRGBO(25, 53, 119, .5),
+  500: Color.fromRGBO(25, 53, 119, .6),
+  600: Color.fromRGBO(25, 53, 119, .7),
+  700: Color.fromRGBO(25, 53, 119, .8),
+  800: Color.fromRGBO(25, 53, 119, .9),
+  900: Color.fromRGBO(25, 53, 119, 1),
 };
 
 class MyApp extends StatelessWidget {
@@ -35,27 +34,24 @@ class MyApp extends StatelessWidget {
       DeviceOrientation.portraitUp,
       DeviceOrientation.portraitDown,
     ]);
-    return Sizer(
-        builder: (context, orientation, deviceType) {
-          return    MaterialApp(
-            debugShowCheckedModeBanner: false,
-            title: 'BikeJunction Customer',
-            theme: ThemeData(
-              primarySwatch: MaterialColor(0xff0000ff, color),
-              textSelectionTheme: TextSelectionThemeData(cursorColor: MaterialColor(0xff0000ff, color)),
-            ),
-            home:
-            Home(),
-            // AddJobsScreen()
-            //LogInScreen()
-            // EnterOtpScreen("+919011547660")
-            // DashboardScreen()
-          );
-        }
-    );
+    return Sizer(builder: (context, orientation, deviceType) {
+      return MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'BikeJunction Customer',
+        theme: ThemeData(
+          primarySwatch: MaterialColor(0xff0000ff, color),
+          textSelectionTheme: TextSelectionThemeData(
+              cursorColor: MaterialColor(0xff0000ff, color)),
+        ),
+        home: Home(),
+        // AddJobsScreen()
+        //LogInScreen()
+        // EnterOtpScreen("+919011547660")
+        // DashboardScreen()
+      );
+    });
   }
 }
-
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -68,12 +64,13 @@ class _HomeState extends State<Home> {
   void startTimer() {
     Timer(
         Duration(seconds: 2),
-            () => Navigator.of(context).pushReplacement(
-          MaterialPageRoute(
-              builder: (BuildContext context) =>
-                  SharedPreference.getIsLogin() == true ? DashboardPage():
-                  LogInScreen()),
-        ));
+        () => Navigator.of(context).pushReplacement(
+              MaterialPageRoute(
+                  builder: (BuildContext context) =>
+                      SharedPreference.getIsLogin() == true
+                          ? DashboardPage()
+                          : LogInScreen()),
+            ));
   }
 
   @override
@@ -96,8 +93,7 @@ class _HomeState extends State<Home> {
           color: MyColors.app_theme_color,
           height: double.infinity,
           width: double.infinity,
-          child: Image.asset(MyAssets.app_logo)
-      ),
+          child: Image.asset(MyAssets.app_logo)),
     );
   }
 }

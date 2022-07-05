@@ -40,7 +40,6 @@ class ApiService implements Repository {
   @override
   Future<VerifyOtpResponseModel> verify(verifyOtpRequestModel, url) {
     var newUrl = Uri.parse(baseUrl + url);
-    print(newUrl);
     print(verifyOtpRequestModelToJson(verifyOtpRequestModel));
     return http
         .post(newUrl,
