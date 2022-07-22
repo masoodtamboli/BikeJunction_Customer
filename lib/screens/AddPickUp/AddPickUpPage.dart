@@ -22,6 +22,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:upi_india/upi_india.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
 
@@ -70,16 +71,7 @@ class _AddPickUpPageState extends State<AddPickUpPage>
   late String sMinute;
   late String finalEndDate;
   late String finalEndTime;
-  bool isValidBikeName = false;
-  bool isValidBikeNumber = false;
-  bool isValidPickUpDateTime = false;
-  bool isValidBikePickUpAddr = false;
-  bool isValidBikeProblems = false;
-  bool isValidBikeServices = false;
-  bool isValidBikeBranchName = false;
-  bool isValidBikeDentImages = false;
   bool isBranchSelected = false;
-  bool isBikeBrandValid = false;
   var selectedImgExtension;
   late AddPickUpPresenter addPickUpPresenter;
   late String selectedBrand;
@@ -136,111 +128,9 @@ class _AddPickUpPageState extends State<AddPickUpPage>
         getBrand();
         getAllBranch();
       } else {
-        // DialogHelper.noInternet(
-        //     context,
-        //     MyAssets.noInternetIcon,
-        //     MyStrings.btn_retry,
-        //     MyStrings.btn_cancel,
-        //     onClickRetry,
-        //     onClickCancel);
+        ShowMessage().showToast("No Internet Connection");
       }
     });
-  }
-
-  validateData() {
-    selectedModel.isEmpty ? isValidBikeName = true : isValidBikeName = false;
-
-    bikeNumberController.text.isEmpty
-        ? isValidBikeNumber = true
-        : isValidBikeNumber = false;
-
-    addressToPickController.text.isEmpty
-        ? isValidBikePickUpAddr = true
-        : isValidBikePickUpAddr = false;
-
-    selectedModel.isEmpty ? isValidBikeName = true : isValidBikeName = false;
-
-    pickUpTimeDateController.text.isEmpty
-        ? isValidPickUpDateTime = true
-        : isValidPickUpDateTime = false;
-
-    problemController.text.isEmpty
-        ? isValidBikeProblems = true
-        : isValidBikeProblems = false;
-
-    servicesController.text.isEmpty
-        ? isValidBikeServices = true
-        : isValidBikeServices = false;
-
-    selectedBrand.isEmpty ? isBikeBrandValid = true : isBikeBrandValid = false;
-
-    if (selectedModel.isEmpty) {
-      setState(() {
-        isValidBikeName = true;
-        ShowMessage().showToast("Enter bike model");
-      });
-      isValidBikeName = false;
-    }
-
-    if (selectedBrand.isEmpty) {
-      setState(() {
-        isBikeBrandValid = true;
-        ShowMessage().showToast("Enter bike brand");
-      });
-      isBikeBrandValid = false;
-    }
-
-    if (bikeNumberController.text.isEmpty) {
-      setState(() {
-        isValidBikeNumber = true;
-        ShowMessage().showToast("Enter bike number");
-      });
-      isValidBikeNumber = false;
-    }
-
-    if (addressToPickController.text.isEmpty) {
-      setState(() {
-        isValidBikePickUpAddr = true;
-        ShowMessage().showToast("Enter pickup address");
-      });
-      isValidBikePickUpAddr = false;
-    }
-
-    if (pickUpTimeDateController.text.isEmpty) {
-      setState(() {
-        isValidPickUpDateTime = true;
-        ShowMessage().showToast("Select pickup date and time");
-      });
-      isValidPickUpDateTime = false;
-    }
-
-    if (problemController.text.isEmpty) {
-      setState(() {
-        isValidBikeProblems = true;
-        ShowMessage().showToast("Enter bike problems");
-      });
-      isValidBikeProblems = false;
-    }
-
-    if (servicesController.text.isEmpty) {
-      setState(() {
-        isValidBikeServices = true;
-        ShowMessage().showToast("Enter bike services");
-      });
-      isValidBikeServices = false;
-    }
-
-    if (isFileSelect == false) {
-      ShowMessage().showToast("select images");
-    }
-
-    // if(isValidBikeName == false &&  isValidBikeNumber == false && isValidBikePickUpAddr == false &&
-    // isValidBikeServices == false && isValidBikeProblems == false && isValidPickUpDateTime == false && isFileSelect == true
-    // && isBranchSelected == true){
-    //
-    //
-    // }
-    addPickUp();
   }
 
   Future captureImage() async {
@@ -344,8 +234,7 @@ class _AddPickUpPageState extends State<AddPickUpPage>
         padding: const EdgeInsets.symmetric(horizontal: 8.0),
         child: GestureDetector(
           onTap: () {
-            validateData();
-            print("clicked");
+            addPickUp();
             //Navigator.of(context).push(MaterialPageRoute(builder: (context)=> DashboardPage()));
           },
           child: Container(
@@ -518,7 +407,6 @@ class _AddPickUpPageState extends State<AddPickUpPage>
                   FilteringTextInputFormatter.deny(RegExp(r'\s')),
                 ],
                 decoration: new InputDecoration(
-                  errorText: isValidBikeNumber ? "Enter bike number" : null,
                   border: new OutlineInputBorder(
                       borderSide:
                           new BorderSide(color: MyColors.app_theme_color)),
@@ -536,8 +424,6 @@ class _AddPickUpPageState extends State<AddPickUpPage>
               child: TextField(
                 controller: addressToPickController,
                 decoration: new InputDecoration(
-                  errorText:
-                      isValidBikePickUpAddr ? "Enter pickup address" : null,
                   border: new OutlineInputBorder(
                       borderSide:
                           new BorderSide(color: MyColors.app_theme_color)),
@@ -581,7 +467,6 @@ class _AddPickUpPageState extends State<AddPickUpPage>
               child: TextField(
                 controller: problemController,
                 decoration: new InputDecoration(
-                  errorText: isValidBikeProblems ? "Enter problems" : null,
                   border: new OutlineInputBorder(
                       borderSide:
                           new BorderSide(color: MyColors.app_theme_color)),
@@ -599,7 +484,6 @@ class _AddPickUpPageState extends State<AddPickUpPage>
               child: TextField(
                 controller: servicesController,
                 decoration: new InputDecoration(
-                  errorText: isValidBikeServices ? "Enter services" : null,
                   border: new OutlineInputBorder(
                       borderSide:
                           new BorderSide(color: MyColors.app_theme_color)),

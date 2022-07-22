@@ -16,7 +16,6 @@ import 'package:bike_junction_customer/utils/MyColors.dart';
 import 'package:bike_junction_customer/utils/MyStrings.dart';
 import 'package:bike_junction_customer/utils/Toast.dart';
 import 'package:bike_junction_customer/utils/sharedPreference/SharedPreference.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
@@ -178,11 +177,11 @@ class _LogInScreenState extends State<LogInScreen>
                       contentPadding: EdgeInsets.only(left: 20),
                       border: OutlineInputBorder(
                         borderSide: BorderSide(color: MyColors.app_theme_color),
-                        borderRadius: BorderRadius.circular(20.0),
+                        borderRadius: BorderRadius.circular(10.0),
                       ),
                       focusedBorder: OutlineInputBorder(
                         borderSide: BorderSide(color: MyColors.app_theme_color),
-                        borderRadius: BorderRadius.circular(20.0),
+                        borderRadius: BorderRadius.circular(10.0),
                       ),
                       hintText: "Mobile number",
                     ),

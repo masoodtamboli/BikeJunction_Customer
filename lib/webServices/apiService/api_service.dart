@@ -6,6 +6,7 @@ import 'package:bike_junction_customer/screens/AddPickUp/model/AllBranchModel.da
 import 'package:bike_junction_customer/screens/AddPickUp/model/GetAllBrandsModel.dart';
 import 'package:bike_junction_customer/screens/AddPickUp/model/GetModelName.dart';
 import 'package:bike_junction_customer/screens/Dashboard/model/GetPickupDataModel.dart';
+import 'package:bike_junction_customer/screens/Dashboard/model/GetUpiDetailsModel.dart';
 import 'package:bike_junction_customer/screens/LogIn/model/login_model.dart';
 import 'package:bike_junction_customer/screens/LogIn/model/verify_otp_model.dart';
 import 'package:bike_junction_customer/screens/RegistrationPage/model/registration_model.dart';
@@ -142,6 +143,19 @@ class ApiService implements Repository {
       }
       print(response.body.toString());
       return getModelNameFromJson(response.body.toString());
+    });
+  }
+
+  @override
+  Future<GetUpiDetailsResponseModel> getUpiDetails(url) {
+    var newUrl = Uri.parse(baseUrl + url);
+    return http.post(newUrl).then((http.Response response) {
+      print(response.statusCode);
+      if (response.statusCode < 200 || response.statusCode > 300) {
+        throw Exception(exceptionMessage);
+      }
+      print(response.body.toString());
+      return getUpiDetailsResponseModelFromJson(response.body.toString());
     });
   }
 }

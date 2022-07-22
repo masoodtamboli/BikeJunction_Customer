@@ -1,5 +1,6 @@
 import 'package:bike_junction_customer/screens/AddPickUp/AddPickUpPage.dart';
 import 'package:bike_junction_customer/screens/Dashboard/tabs/CurrentPickUps.dart';
+import 'package:bike_junction_customer/screens/Dashboard/tabs/MakePayment.dart';
 import 'package:bike_junction_customer/screens/Dashboard/tabs/MyPickUpsTab.dart';
 import 'package:bike_junction_customer/screens/LogIn/LogInScreen.dart';
 import 'package:bike_junction_customer/utils/MyColors.dart';
@@ -18,7 +19,7 @@ class _DashboardPageState extends State<DashboardPage> {
   Widget build(BuildContext context) {
     return DefaultTabController(
       initialIndex: 0,
-      length: 2,
+      length: 3,
       child: Scaffold(
         appBar: AppBar(
           backgroundColor: MyColors.app_theme_color,
@@ -88,6 +89,12 @@ class _DashboardPageState extends State<DashboardPage> {
                                 "MY PICKUPS",
                                 style: TextStyle(fontSize: 12),
                               ),
+                            ),
+                            Tab(
+                              child: Text(
+                                "PAYMENTS",
+                                style: TextStyle(fontSize: 12),
+                              ),
                             )
                           ]),
                     ),
@@ -127,7 +134,7 @@ class _DashboardPageState extends State<DashboardPage> {
   Widget mainBody() {
     return TabBarView(
       physics: AlwaysScrollableScrollPhysics(),
-      children: [CurrentPickUpsTab(), MyPickUpsTab()],
+      children: [CurrentPickUpsTab(), MyPickUpsTab(), MakePayment()],
     );
   }
 }

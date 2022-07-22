@@ -52,6 +52,9 @@ dependencies:
   geolocator: ^8.0.3
   flutter_otp_text_field: ^1.0.1
   flutter_spinkit: ^5.1.0
+  pay: ^1.0.10
+  url_launcher: ^6.1.5
+  upi_india: ^3.0.1
 
 dev_dependencies:
   flutter_test:
