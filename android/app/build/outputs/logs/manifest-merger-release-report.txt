@@ -1,0 +1,401 @@
+-- Merging decision tree log ---
+manifest
+ADDED from C:\Users\mrmas\Downloads\bike_junction_customer\android\app\src\main\AndroidManifest.xml:1:1-48:12
+INJECTED from C:\Users\mrmas\Downloads\bike_junction_customer\android\app\src\main\AndroidManifest.xml:1:1-48:12
+INJECTED from C:\Users\mrmas\Downloads\bike_junction_customer\android\app\src\main\AndroidManifest.xml:1:1-48:12
+INJECTED from C:\Users\mrmas\Downloads\bike_junction_customer\android\app\src\main\AndroidManifest.xml:1:1-48:12
+MERGED from [:alt_sms_autofill] C:\Users\mrmas\Downloads\bike_junction_customer\build\alt_sms_autofill\intermediates\merged_manifest\release\AndroidManifest.xml:2:1-11:12
+MERGED from [:geolocator_android] C:\Users\mrmas\Downloads\bike_junction_customer\build\geolocator_android\intermediates\merged_manifest\release\AndroidManifest.xml:2:1-7:12
+MERGED from [:image_picker] C:\Users\mrmas\Downloads\bike_junction_customer\build\image_picker\intermediates\merged_manifest\release\AndroidManifest.xml:2:1-22:12
+MERGED from [:flutter_plugin_android_lifecycle] C:\Users\mrmas\Downloads\bike_junction_customer\build\flutter_plugin_android_lifecycle\intermediates\merged_manifest\release\AndroidManifest.xml:2:1-7:12
+MERGED from [:url_launcher_android] C:\Users\mrmas\Downloads\bike_junction_customer\build\url_launcher_android\intermediates\merged_manifest\release\AndroidManifest.xml:2:1-14:12
+MERGED from [:pay_android] C:\Users\mrmas\Downloads\bike_junction_customer\build\pay_android\intermediates\merged_manifest\release\AndroidManifest.xml:6:1-17:12
+MERGED from [:shared_preferences_android] C:\Users\mrmas\Downloads\bike_junction_customer\build\shared_preferences_android\intermediates\merged_manifest\release\AndroidManifest.xml:2:1-7:12
+MERGED from [:connectivity] C:\Users\mrmas\Downloads\bike_junction_customer\build\connectivity\intermediates\merged_manifest\release\AndroidManifest.xml:2:1-9:12
+MERGED from [:geocoding] C:\Users\mrmas\Downloads\bike_junction_customer\build\geocoding\intermediates\merged_manifest\release\AndroidManifest.xml:2:1-7:12
+MERGED from [:upi_india] C:\Users\mrmas\Downloads\bike_junction_customer\build\upi_india\intermediates\merged_manifest\release\AndroidManifest.xml:2:1-58:12
+MERGED from [:fluttertoast] C:\Users\mrmas\Downloads\bike_junction_customer\build\fluttertoast\intermediates\merged_manifest\release\AndroidManifest.xml:2:1-7:12
+MERGED from [:flutter_custom_dialog] C:\Users\mrmas\Downloads\bike_junction_customer\build\flutter_custom_dialog\intermediates\merged_manifest\release\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.core:core-ktx:1.7.0] C:\Users\mrmas\.gradle\caches\transforms-3\c4000b1f58767d7e9b62b0600db1c210\transformed\jetified-core-ktx-1.7.0\AndroidManifest.xml:2:1-9:12
+MERGED from [androidx.lifecycle:lifecycle-extensions:2.2.0] C:\Users\mrmas\.gradle\caches\transforms-3\42bf30a92c589b423de8cb99637fdbd3\transformed\lifecycle-extensions-2.2.0\AndroidManifest.xml:17:1-27:12
+MERGED from [com.google.android.gms:play-services-auth:18.1.0] C:\Users\mrmas\.gradle\caches\transforms-3\59febd34e13de6b5a4a13523f9208f59\transformed\jetified-play-services-auth-18.1.0\AndroidManifest.xml:17:1-40:12
+MERGED from [com.google.android.gms:play-services-location:17.0.0] C:\Users\mrmas\.gradle\caches\transforms-3\72fa623440dfa64647c2dfd85b51dd4e\transformed\jetified-play-services-location-17.0.0\AndroidManifest.xml:2:1-9:12
+MERGED from [androidx.exifinterface:exifinterface:1.3.0] C:\Users\mrmas\.gradle\caches\transforms-3\cb8f5f2de8f345bc6fb51948c86609b7\transformed\exifinterface-1.3.0\AndroidManifest.xml:17:1-24:12
+MERGED from [com.google.android.gms:play-services-wallet:18.1.2] C:\Users\mrmas\.gradle\caches\transforms-3\b59b2df70e50b417804a08627cfda44a\transformed\jetified-play-services-wallet-18.1.2\AndroidManifest.xml:17:1-22:12
+MERGED from [com.google.android.gms:play-services-auth-api-phone:17.0.0] C:\Users\mrmas\.gradle\caches\transforms-3\ac7f751ff1e06db653ce90a6dc3de573\transformed\jetified-play-services-auth-api-phone-17.0.0\AndroidManifest.xml:2:1-7:12
+MERGED from [com.google.android.gms:play-services-auth-base:17.0.0] C:\Users\mrmas\.gradle\caches\transforms-3\a538351d591910761797d8f9c710686a\transformed\jetified-play-services-auth-base-17.0.0\AndroidManifest.xml:2:1-7:12
+MERGED from [com.google.android.gms:play-services-identity:17.0.0] C:\Users\mrmas\.gradle\caches\transforms-3\c89beabcb57b373d491ac35a0f2df523\transformed\jetified-play-services-identity-17.0.0\AndroidManifest.xml:17:1-24:12
+MERGED from [com.google.android.gms:play-services-maps:17.0.0] C:\Users\mrmas\.gradle\caches\transforms-3\235fb26791d0b7784506b383227a05f0\transformed\jetified-play-services-maps-17.0.0\AndroidManifest.xml:17:1-38:12
+MERGED from [com.google.android.gms:play-services-base:17.1.0] C:\Users\mrmas\.gradle\caches\transforms-3\0c9122123e66b9effd0c86aa78743dee\transformed\jetified-play-services-base-17.1.0\AndroidManifest.xml:17:1-29:12
+MERGED from [com.google.android.gms:play-services-tasks:17.0.0] C:\Users\mrmas\.gradle\caches\transforms-3\201646ab2518205ae6987aee74f3cb33\transformed\jetified-play-services-tasks-17.0.0\AndroidManifest.xml:2:1-9:12
+MERGED from [com.google.android.gms:play-services-places-placereport:17.0.0] C:\Users\mrmas\.gradle\caches\transforms-3\b5b3f8506fc0794bd37f17da4b56a237\transformed\jetified-play-services-places-placereport-17.0.0\AndroidManifest.xml:17:1-24:12
+MERGED from [com.google.android.gms:play-services-basement:17.1.1] C:\Users\mrmas\.gradle\caches\transforms-3\d76c05e36b3e1583955f4758dd437935\transformed\jetified-play-services-basement-17.1.1\AndroidManifest.xml:17:1-28:12
+MERGED from [androidx.fragment:fragment:1.2.0] C:\Users\mrmas\.gradle\caches\transforms-3\b8223b06afa2eb42f41c771bcfdf802b\transformed\fragment-1.2.0\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.loader:loader:1.0.0] C:\Users\mrmas\.gradle\caches\transforms-3\e7665e67ed92725123890cd5c4675a32\transformed\loader-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.viewpager:viewpager:1.0.0] C:\Users\mrmas\.gradle\caches\transforms-3\48cfbb676c8d8fdf095b0734ebc7ff16\transformed\viewpager-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.activity:activity:1.1.0] C:\Users\mrmas\.gradle\caches\transforms-3\96e4b625cf86bf9b870d9cad328a5d28\transformed\jetified-activity-1.1.0\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.customview:customview:1.0.0] C:\Users\mrmas\.gradle\caches\transforms-3\6018523bfe79b13331060b6a493f2c2b\transformed\customview-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.core:core:1.7.0] C:\Users\mrmas\.gradle\caches\transforms-3\fb3270031bd107031c21c5dc13d9e5ef\transformed\core-1.7.0\AndroidManifest.xml:17:1-26:12
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.2.0] C:\Users\mrmas\.gradle\caches\transforms-3\7126d8a1fc350ddab7477e33cd031288\transformed\lifecycle-livedata-2.2.0\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.lifecycle:lifecycle-process:2.2.0] C:\Users\mrmas\.gradle\caches\transforms-3\0fcb3a380d77ebf29041cbbb6f2e9be9\transformed\jetified-lifecycle-process-2.2.0\AndroidManifest.xml:17:1-32:12
+MERGED from [androidx.lifecycle:lifecycle-service:2.2.0] C:\Users\mrmas\.gradle\caches\transforms-3\b2a8e07793141fd0e5c3d9abb1953f36\transformed\jetified-lifecycle-service-2.2.0\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.3.1] C:\Users\mrmas\.gradle\caches\transforms-3\64c49fa4643332ede64efa754e8de1ea\transformed\lifecycle-runtime-2.3.1\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:1.0.0] C:\Users\mrmas\.gradle\caches\transforms-3\8d4086b5fdad97fc058a7f102eb249e8\transformed\jetified-lifecycle-viewmodel-savedstate-1.0.0\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.2.0] C:\Users\mrmas\.gradle\caches\transforms-3\a87f6a2f9a4d984299efb6756b582b1a\transformed\lifecycle-livedata-core-2.2.0\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.arch.core:core-runtime:2.1.0] C:\Users\mrmas\.gradle\caches\transforms-3\22eb259cbf1a4aa11334cf36c7a52187\transformed\core-runtime-2.1.0\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.savedstate:savedstate:1.0.0] C:\Users\mrmas\.gradle\caches\transforms-3\992afe8fa879fb6e37c36e3dc1f206d1\transformed\jetified-savedstate-1.0.0\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.2.0] C:\Users\mrmas\.gradle\caches\transforms-3\aa4e12b16e5256ca1604a444385db2bf\transformed\lifecycle-viewmodel-2.2.0\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.tracing:tracing:1.0.0] C:\Users\mrmas\.gradle\caches\transforms-3\ed7ed0ca27edb40e377e214bdfbdd39a\transformed\jetified-tracing-1.0.0\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\mrmas\.gradle\caches\transforms-3\70f63520192deee43ee88ab45563d13d\transformed\versionedparcelable-1.1.1\AndroidManifest.xml:17:1-27:12
+MERGED from [androidx.annotation:annotation-experimental:1.1.0] C:\Users\mrmas\.gradle\caches\transforms-3\29c7b199d4646ee497ba13091e7b830d\transformed\jetified-annotation-experimental-1.1.0\AndroidManifest.xml:17:1-24:12
+INJECTED from C:\Users\mrmas\Downloads\bike_junction_customer\android\app\src\main\AndroidManifest.xml:1:1-48:12
+INJECTED from C:\Users\mrmas\Downloads\bike_junction_customer\android\app\src\main\AndroidManifest.xml:1:1-48:12
+INJECTED from C:\Users\mrmas\Downloads\bike_junction_customer\android\app\src\main\AndroidManifest.xml:1:1-48:12
+	package
+		ADDED from C:\Users\mrmas\Downloads\bike_junction_customer\android\app\src\main\AndroidManifest.xml:2:5-54
+		INJECTED from C:\Users\mrmas\Downloads\bike_junction_customer\android\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\mrmas\Downloads\bike_junction_customer\android\app\src\main\AndroidManifest.xml
+	android:versionName
+		INJECTED from C:\Users\mrmas\Downloads\bike_junction_customer\android\app\src\main\AndroidManifest.xml
+		ADDED from C:\Users\mrmas\Downloads\bike_junction_customer\android\app\src\main\AndroidManifest.xml:1:1-48:12
+		INJECTED from C:\Users\mrmas\Downloads\bike_junction_customer\android\app\src\main\AndroidManifest.xml
+	android:versionCode
+		INJECTED from C:\Users\mrmas\Downloads\bike_junction_customer\android\app\src\main\AndroidManifest.xml
+		ADDED from C:\Users\mrmas\Downloads\bike_junction_customer\android\app\src\main\AndroidManifest.xml:1:1-48:12
+		INJECTED from C:\Users\mrmas\Downloads\bike_junction_customer\android\app\src\main\AndroidManifest.xml
+	xmlns:android
+		ADDED from C:\Users\mrmas\Downloads\bike_junction_customer\android\app\src\main\AndroidManifest.xml:1:11-69
+uses-permission#android.permission.INTERNET
+ADDED from C:\Users\mrmas\Downloads\bike_junction_customer\android\app\src\main\AndroidManifest.xml:4:5-66
+MERGED from [com.google.android.gms:play-services-maps:17.0.0] C:\Users\mrmas\.gradle\caches\transforms-3\235fb26791d0b7784506b383227a05f0\transformed\jetified-play-services-maps-17.0.0\AndroidManifest.xml:24:5-67
+MERGED from [com.google.android.gms:play-services-maps:17.0.0] C:\Users\mrmas\.gradle\caches\transforms-3\235fb26791d0b7784506b383227a05f0\transformed\jetified-play-services-maps-17.0.0\AndroidManifest.xml:24:5-67
+	android:name
+		ADDED from C:\Users\mrmas\Downloads\bike_junction_customer\android\app\src\main\AndroidManifest.xml:4:22-64
+uses-permission#android.permission.ACCESS_WIFI_STATE
+ADDED from C:\Users\mrmas\Downloads\bike_junction_customer\android\app\src\main\AndroidManifest.xml:5:5-75
+	android:name
+		ADDED from C:\Users\mrmas\Downloads\bike_junction_customer\android\app\src\main\AndroidManifest.xml:5:22-73
+uses-permission#android.permission.CHANGE_WIFI_STATE
+ADDED from C:\Users\mrmas\Downloads\bike_junction_customer\android\app\src\main\AndroidManifest.xml:6:5-75
+	android:name
+		ADDED from C:\Users\mrmas\Downloads\bike_junction_customer\android\app\src\main\AndroidManifest.xml:6:22-73
+uses-permission#android.permission.READ_EXTERNAL_STORAGE
+ADDED from C:\Users\mrmas\Downloads\bike_junction_customer\android\app\src\main\AndroidManifest.xml:7:5-79
+MERGED from [:image_picker] C:\Users\mrmas\Downloads\bike_junction_customer\build\image_picker\intermediates\merged_manifest\release\AndroidManifest.xml:7:5-80
+MERGED from [:image_picker] C:\Users\mrmas\Downloads\bike_junction_customer\build\image_picker\intermediates\merged_manifest\release\AndroidManifest.xml:7:5-80
+	android:name
+		ADDED from C:\Users\mrmas\Downloads\bike_junction_customer\android\app\src\main\AndroidManifest.xml:7:22-77
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+ADDED from C:\Users\mrmas\Downloads\bike_junction_customer\android\app\src\main\AndroidManifest.xml:8:5-80
+MERGED from [:image_picker] C:\Users\mrmas\Downloads\bike_junction_customer\build\image_picker\intermediates\merged_manifest\release\AndroidManifest.xml:8:5-81
+MERGED from [:image_picker] C:\Users\mrmas\Downloads\bike_junction_customer\build\image_picker\intermediates\merged_manifest\release\AndroidManifest.xml:8:5-81
+	android:name
+		ADDED from C:\Users\mrmas\Downloads\bike_junction_customer\android\app\src\main\AndroidManifest.xml:8:22-78
+uses-permission#android.permission.READ_CONTACTS
+ADDED from C:\Users\mrmas\Downloads\bike_junction_customer\android\app\src\main\AndroidManifest.xml:9:5-72
+	android:name
+		ADDED from C:\Users\mrmas\Downloads\bike_junction_customer\android\app\src\main\AndroidManifest.xml:9:22-69
+uses-permission#android.permission.WRITE_CONTACTS
+ADDED from C:\Users\mrmas\Downloads\bike_junction_customer\android\app\src\main\AndroidManifest.xml:10:5-73
+	android:name
+		ADDED from C:\Users\mrmas\Downloads\bike_junction_customer\android\app\src\main\AndroidManifest.xml:10:22-70
+application
+ADDED from C:\Users\mrmas\Downloads\bike_junction_customer\android\app\src\main\AndroidManifest.xml:11:5-47:19
+MERGED from [:image_picker] C:\Users\mrmas\Downloads\bike_junction_customer\build\image_picker\intermediates\merged_manifest\release\AndroidManifest.xml:10:5-20:19
+MERGED from [:image_picker] C:\Users\mrmas\Downloads\bike_junction_customer\build\image_picker\intermediates\merged_manifest\release\AndroidManifest.xml:10:5-20:19
+MERGED from [:url_launcher_android] C:\Users\mrmas\Downloads\bike_junction_customer\build\url_launcher_android\intermediates\merged_manifest\release\AndroidManifest.xml:7:5-12:19
+MERGED from [:url_launcher_android] C:\Users\mrmas\Downloads\bike_junction_customer\build\url_launcher_android\intermediates\merged_manifest\release\AndroidManifest.xml:7:5-12:19
+MERGED from [:pay_android] C:\Users\mrmas\Downloads\bike_junction_customer\build\pay_android\intermediates\merged_manifest\release\AndroidManifest.xml:11:5-15:19
+MERGED from [:pay_android] C:\Users\mrmas\Downloads\bike_junction_customer\build\pay_android\intermediates\merged_manifest\release\AndroidManifest.xml:11:5-15:19
+MERGED from [androidx.lifecycle:lifecycle-extensions:2.2.0] C:\Users\mrmas\.gradle\caches\transforms-3\42bf30a92c589b423de8cb99637fdbd3\transformed\lifecycle-extensions-2.2.0\AndroidManifest.xml:24:5-25:19
+MERGED from [androidx.lifecycle:lifecycle-extensions:2.2.0] C:\Users\mrmas\.gradle\caches\transforms-3\42bf30a92c589b423de8cb99637fdbd3\transformed\lifecycle-extensions-2.2.0\AndroidManifest.xml:24:5-25:19
+MERGED from [com.google.android.gms:play-services-auth:18.1.0] C:\Users\mrmas\.gradle\caches\transforms-3\59febd34e13de6b5a4a13523f9208f59\transformed\jetified-play-services-auth-18.1.0\AndroidManifest.xml:22:5-38:19
+MERGED from [com.google.android.gms:play-services-auth:18.1.0] C:\Users\mrmas\.gradle\caches\transforms-3\59febd34e13de6b5a4a13523f9208f59\transformed\jetified-play-services-auth-18.1.0\AndroidManifest.xml:22:5-38:19
+MERGED from [com.google.android.gms:play-services-location:17.0.0] C:\Users\mrmas\.gradle\caches\transforms-3\72fa623440dfa64647c2dfd85b51dd4e\transformed\jetified-play-services-location-17.0.0\AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-location:17.0.0] C:\Users\mrmas\.gradle\caches\transforms-3\72fa623440dfa64647c2dfd85b51dd4e\transformed\jetified-play-services-location-17.0.0\AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-identity:17.0.0] C:\Users\mrmas\.gradle\caches\transforms-3\c89beabcb57b373d491ac35a0f2df523\transformed\jetified-play-services-identity-17.0.0\AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.gms:play-services-identity:17.0.0] C:\Users\mrmas\.gradle\caches\transforms-3\c89beabcb57b373d491ac35a0f2df523\transformed\jetified-play-services-identity-17.0.0\AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.gms:play-services-maps:17.0.0] C:\Users\mrmas\.gradle\caches\transforms-3\235fb26791d0b7784506b383227a05f0\transformed\jetified-play-services-maps-17.0.0\AndroidManifest.xml:30:5-36:19
+MERGED from [com.google.android.gms:play-services-maps:17.0.0] C:\Users\mrmas\.gradle\caches\transforms-3\235fb26791d0b7784506b383227a05f0\transformed\jetified-play-services-maps-17.0.0\AndroidManifest.xml:30:5-36:19
+MERGED from [com.google.android.gms:play-services-base:17.1.0] C:\Users\mrmas\.gradle\caches\transforms-3\0c9122123e66b9effd0c86aa78743dee\transformed\jetified-play-services-base-17.1.0\AndroidManifest.xml:22:5-27:19
+MERGED from [com.google.android.gms:play-services-base:17.1.0] C:\Users\mrmas\.gradle\caches\transforms-3\0c9122123e66b9effd0c86aa78743dee\transformed\jetified-play-services-base-17.1.0\AndroidManifest.xml:22:5-27:19
+MERGED from [com.google.android.gms:play-services-tasks:17.0.0] C:\Users\mrmas\.gradle\caches\transforms-3\201646ab2518205ae6987aee74f3cb33\transformed\jetified-play-services-tasks-17.0.0\AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-tasks:17.0.0] C:\Users\mrmas\.gradle\caches\transforms-3\201646ab2518205ae6987aee74f3cb33\transformed\jetified-play-services-tasks-17.0.0\AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-places-placereport:17.0.0] C:\Users\mrmas\.gradle\caches\transforms-3\b5b3f8506fc0794bd37f17da4b56a237\transformed\jetified-play-services-places-placereport-17.0.0\AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.gms:play-services-places-placereport:17.0.0] C:\Users\mrmas\.gradle\caches\transforms-3\b5b3f8506fc0794bd37f17da4b56a237\transformed\jetified-play-services-places-placereport-17.0.0\AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.gms:play-services-basement:17.1.1] C:\Users\mrmas\.gradle\caches\transforms-3\d76c05e36b3e1583955f4758dd437935\transformed\jetified-play-services-basement-17.1.1\AndroidManifest.xml:22:5-26:19
+MERGED from [com.google.android.gms:play-services-basement:17.1.1] C:\Users\mrmas\.gradle\caches\transforms-3\d76c05e36b3e1583955f4758dd437935\transformed\jetified-play-services-basement-17.1.1\AndroidManifest.xml:22:5-26:19
+MERGED from [androidx.core:core:1.7.0] C:\Users\mrmas\.gradle\caches\transforms-3\fb3270031bd107031c21c5dc13d9e5ef\transformed\core-1.7.0\AndroidManifest.xml:24:5-89
+MERGED from [androidx.core:core:1.7.0] C:\Users\mrmas\.gradle\caches\transforms-3\fb3270031bd107031c21c5dc13d9e5ef\transformed\core-1.7.0\AndroidManifest.xml:24:5-89
+MERGED from [androidx.lifecycle:lifecycle-process:2.2.0] C:\Users\mrmas\.gradle\caches\transforms-3\0fcb3a380d77ebf29041cbbb6f2e9be9\transformed\jetified-lifecycle-process-2.2.0\AndroidManifest.xml:24:5-30:19
+MERGED from [androidx.lifecycle:lifecycle-process:2.2.0] C:\Users\mrmas\.gradle\caches\transforms-3\0fcb3a380d77ebf29041cbbb6f2e9be9\transformed\jetified-lifecycle-process-2.2.0\AndroidManifest.xml:24:5-30:19
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\mrmas\.gradle\caches\transforms-3\70f63520192deee43ee88ab45563d13d\transformed\versionedparcelable-1.1.1\AndroidManifest.xml:24:5-25:19
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\mrmas\.gradle\caches\transforms-3\70f63520192deee43ee88ab45563d13d\transformed\versionedparcelable-1.1.1\AndroidManifest.xml:24:5-25:19
+	android:appComponentFactory
+		ADDED from [androidx.core:core:1.7.0] C:\Users\mrmas\.gradle\caches\transforms-3\fb3270031bd107031c21c5dc13d9e5ef\transformed\core-1.7.0\AndroidManifest.xml:24:18-86
+	android:label
+		ADDED from C:\Users\mrmas\Downloads\bike_junction_customer\android\app\src\main\AndroidManifest.xml:13:9-37
+	android:icon
+		ADDED from C:\Users\mrmas\Downloads\bike_junction_customer\android\app\src\main\AndroidManifest.xml:12:9-45
+activity#com.bikejunction.bike_junction_customer.MainActivity
+ADDED from C:\Users\mrmas\Downloads\bike_junction_customer\android\app\src\main\AndroidManifest.xml:14:9-41:20
+	android:launchMode
+		ADDED from C:\Users\mrmas\Downloads\bike_junction_customer\android\app\src\main\AndroidManifest.xml:19:13-43
+	android:hardwareAccelerated
+		ADDED from C:\Users\mrmas\Downloads\bike_junction_customer\android\app\src\main\AndroidManifest.xml:18:13-47
+	android:windowSoftInputMode
+		ADDED from C:\Users\mrmas\Downloads\bike_junction_customer\android\app\src\main\AndroidManifest.xml:21:13-55
+	android:exported
+		ADDED from C:\Users\mrmas\Downloads\bike_junction_customer\android\app\src\main\AndroidManifest.xml:17:13-36
+	android:configChanges
+		ADDED from C:\Users\mrmas\Downloads\bike_junction_customer\android\app\src\main\AndroidManifest.xml:16:13-163
+	android:theme
+		ADDED from C:\Users\mrmas\Downloads\bike_junction_customer\android\app\src\main\AndroidManifest.xml:20:13-47
+	android:name
+		ADDED from C:\Users\mrmas\Downloads\bike_junction_customer\android\app\src\main\AndroidManifest.xml:15:13-41
+meta-data#io.flutter.embedding.android.NormalTheme
+ADDED from C:\Users\mrmas\Downloads\bike_junction_customer\android\app\src\main\AndroidManifest.xml:26:13-28:57
+	android:resource
+		ADDED from C:\Users\mrmas\Downloads\bike_junction_customer\android\app\src\main\AndroidManifest.xml:28:17-54
+	android:name
+		ADDED from C:\Users\mrmas\Downloads\bike_junction_customer\android\app\src\main\AndroidManifest.xml:27:17-72
+meta-data#io.flutter.embedding.android.SplashScreenDrawable
+ADDED from C:\Users\mrmas\Downloads\bike_junction_customer\android\app\src\main\AndroidManifest.xml:34:13-36:66
+	android:resource
+		ADDED from C:\Users\mrmas\Downloads\bike_junction_customer\android\app\src\main\AndroidManifest.xml:36:17-63
+	android:name
+		ADDED from C:\Users\mrmas\Downloads\bike_junction_customer\android\app\src\main\AndroidManifest.xml:35:17-81
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from C:\Users\mrmas\Downloads\bike_junction_customer\android\app\src\main\AndroidManifest.xml:37:13-40:29
+action#android.intent.action.MAIN
+ADDED from C:\Users\mrmas\Downloads\bike_junction_customer\android\app\src\main\AndroidManifest.xml:38:17-69
+	android:name
+		ADDED from C:\Users\mrmas\Downloads\bike_junction_customer\android\app\src\main\AndroidManifest.xml:38:25-66
+category#android.intent.category.LAUNCHER
+ADDED from C:\Users\mrmas\Downloads\bike_junction_customer\android\app\src\main\AndroidManifest.xml:39:17-77
+	android:name
+		ADDED from C:\Users\mrmas\Downloads\bike_junction_customer\android\app\src\main\AndroidManifest.xml:39:27-74
+meta-data#flutterEmbedding
+ADDED from C:\Users\mrmas\Downloads\bike_junction_customer\android\app\src\main\AndroidManifest.xml:44:9-46:33
+	android:value
+		ADDED from C:\Users\mrmas\Downloads\bike_junction_customer\android\app\src\main\AndroidManifest.xml:46:13-30
+	android:name
+		ADDED from C:\Users\mrmas\Downloads\bike_junction_customer\android\app\src\main\AndroidManifest.xml:45:13-44
+uses-sdk
+INJECTED from C:\Users\mrmas\Downloads\bike_junction_customer\android\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from C:\Users\mrmas\Downloads\bike_junction_customer\android\app\src\main\AndroidManifest.xml
+INJECTED from C:\Users\mrmas\Downloads\bike_junction_customer\android\app\src\main\AndroidManifest.xml
+MERGED from [:alt_sms_autofill] C:\Users\mrmas\Downloads\bike_junction_customer\build\alt_sms_autofill\intermediates\merged_manifest\release\AndroidManifest.xml:5:5-44
+MERGED from [:alt_sms_autofill] C:\Users\mrmas\Downloads\bike_junction_customer\build\alt_sms_autofill\intermediates\merged_manifest\release\AndroidManifest.xml:5:5-44
+MERGED from [:geolocator_android] C:\Users\mrmas\Downloads\bike_junction_customer\build\geolocator_android\intermediates\merged_manifest\release\AndroidManifest.xml:5:5-44
+MERGED from [:geolocator_android] C:\Users\mrmas\Downloads\bike_junction_customer\build\geolocator_android\intermediates\merged_manifest\release\AndroidManifest.xml:5:5-44
+MERGED from [:image_picker] C:\Users\mrmas\Downloads\bike_junction_customer\build\image_picker\intermediates\merged_manifest\release\AndroidManifest.xml:5:5-44
+MERGED from [:image_picker] C:\Users\mrmas\Downloads\bike_junction_customer\build\image_picker\intermediates\merged_manifest\release\AndroidManifest.xml:5:5-44
+MERGED from [:flutter_plugin_android_lifecycle] C:\Users\mrmas\Downloads\bike_junction_customer\build\flutter_plugin_android_lifecycle\intermediates\merged_manifest\release\AndroidManifest.xml:5:5-44
+MERGED from [:flutter_plugin_android_lifecycle] C:\Users\mrmas\Downloads\bike_junction_customer\build\flutter_plugin_android_lifecycle\intermediates\merged_manifest\release\AndroidManifest.xml:5:5-44
+MERGED from [:url_launcher_android] C:\Users\mrmas\Downloads\bike_junction_customer\build\url_launcher_android\intermediates\merged_manifest\release\AndroidManifest.xml:5:5-44
+MERGED from [:url_launcher_android] C:\Users\mrmas\Downloads\bike_junction_customer\build\url_launcher_android\intermediates\merged_manifest\release\AndroidManifest.xml:5:5-44
+MERGED from [:pay_android] C:\Users\mrmas\Downloads\bike_junction_customer\build\pay_android\intermediates\merged_manifest\release\AndroidManifest.xml:9:5-44
+MERGED from [:pay_android] C:\Users\mrmas\Downloads\bike_junction_customer\build\pay_android\intermediates\merged_manifest\release\AndroidManifest.xml:9:5-44
+MERGED from [:shared_preferences_android] C:\Users\mrmas\Downloads\bike_junction_customer\build\shared_preferences_android\intermediates\merged_manifest\release\AndroidManifest.xml:5:5-44
+MERGED from [:shared_preferences_android] C:\Users\mrmas\Downloads\bike_junction_customer\build\shared_preferences_android\intermediates\merged_manifest\release\AndroidManifest.xml:5:5-44
+MERGED from [:connectivity] C:\Users\mrmas\Downloads\bike_junction_customer\build\connectivity\intermediates\merged_manifest\release\AndroidManifest.xml:5:5-44
+MERGED from [:connectivity] C:\Users\mrmas\Downloads\bike_junction_customer\build\connectivity\intermediates\merged_manifest\release\AndroidManifest.xml:5:5-44
+MERGED from [:geocoding] C:\Users\mrmas\Downloads\bike_junction_customer\build\geocoding\intermediates\merged_manifest\release\AndroidManifest.xml:5:5-44
+MERGED from [:geocoding] C:\Users\mrmas\Downloads\bike_junction_customer\build\geocoding\intermediates\merged_manifest\release\AndroidManifest.xml:5:5-44
+MERGED from [:upi_india] C:\Users\mrmas\Downloads\bike_junction_customer\build\upi_india\intermediates\merged_manifest\release\AndroidManifest.xml:5:5-44
+MERGED from [:upi_india] C:\Users\mrmas\Downloads\bike_junction_customer\build\upi_india\intermediates\merged_manifest\release\AndroidManifest.xml:5:5-44
+MERGED from [:fluttertoast] C:\Users\mrmas\Downloads\bike_junction_customer\build\fluttertoast\intermediates\merged_manifest\release\AndroidManifest.xml:5:5-44
+MERGED from [:fluttertoast] C:\Users\mrmas\Downloads\bike_junction_customer\build\fluttertoast\intermediates\merged_manifest\release\AndroidManifest.xml:5:5-44
+MERGED from [:flutter_custom_dialog] C:\Users\mrmas\Downloads\bike_junction_customer\build\flutter_custom_dialog\intermediates\merged_manifest\release\AndroidManifest.xml:5:5-44
+MERGED from [:flutter_custom_dialog] C:\Users\mrmas\Downloads\bike_junction_customer\build\flutter_custom_dialog\intermediates\merged_manifest\release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.core:core-ktx:1.7.0] C:\Users\mrmas\.gradle\caches\transforms-3\c4000b1f58767d7e9b62b0600db1c210\transformed\jetified-core-ktx-1.7.0\AndroidManifest.xml:5:5-7:41
+MERGED from [androidx.core:core-ktx:1.7.0] C:\Users\mrmas\.gradle\caches\transforms-3\c4000b1f58767d7e9b62b0600db1c210\transformed\jetified-core-ktx-1.7.0\AndroidManifest.xml:5:5-7:41
+MERGED from [androidx.lifecycle:lifecycle-extensions:2.2.0] C:\Users\mrmas\.gradle\caches\transforms-3\42bf30a92c589b423de8cb99637fdbd3\transformed\lifecycle-extensions-2.2.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-extensions:2.2.0] C:\Users\mrmas\.gradle\caches\transforms-3\42bf30a92c589b423de8cb99637fdbd3\transformed\lifecycle-extensions-2.2.0\AndroidManifest.xml:20:5-22:41
+MERGED from [com.google.android.gms:play-services-auth:18.1.0] C:\Users\mrmas\.gradle\caches\transforms-3\59febd34e13de6b5a4a13523f9208f59\transformed\jetified-play-services-auth-18.1.0\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-auth:18.1.0] C:\Users\mrmas\.gradle\caches\transforms-3\59febd34e13de6b5a4a13523f9208f59\transformed\jetified-play-services-auth-18.1.0\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-location:17.0.0] C:\Users\mrmas\.gradle\caches\transforms-3\72fa623440dfa64647c2dfd85b51dd4e\transformed\jetified-play-services-location-17.0.0\AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-location:17.0.0] C:\Users\mrmas\.gradle\caches\transforms-3\72fa623440dfa64647c2dfd85b51dd4e\transformed\jetified-play-services-location-17.0.0\AndroidManifest.xml:5:5-44
+MERGED from [androidx.exifinterface:exifinterface:1.3.0] C:\Users\mrmas\.gradle\caches\transforms-3\cb8f5f2de8f345bc6fb51948c86609b7\transformed\exifinterface-1.3.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.exifinterface:exifinterface:1.3.0] C:\Users\mrmas\.gradle\caches\transforms-3\cb8f5f2de8f345bc6fb51948c86609b7\transformed\exifinterface-1.3.0\AndroidManifest.xml:20:5-22:41
+MERGED from [com.google.android.gms:play-services-wallet:18.1.2] C:\Users\mrmas\.gradle\caches\transforms-3\b59b2df70e50b417804a08627cfda44a\transformed\jetified-play-services-wallet-18.1.2\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-wallet:18.1.2] C:\Users\mrmas\.gradle\caches\transforms-3\b59b2df70e50b417804a08627cfda44a\transformed\jetified-play-services-wallet-18.1.2\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-auth-api-phone:17.0.0] C:\Users\mrmas\.gradle\caches\transforms-3\ac7f751ff1e06db653ce90a6dc3de573\transformed\jetified-play-services-auth-api-phone-17.0.0\AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-auth-api-phone:17.0.0] C:\Users\mrmas\.gradle\caches\transforms-3\ac7f751ff1e06db653ce90a6dc3de573\transformed\jetified-play-services-auth-api-phone-17.0.0\AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-auth-base:17.0.0] C:\Users\mrmas\.gradle\caches\transforms-3\a538351d591910761797d8f9c710686a\transformed\jetified-play-services-auth-base-17.0.0\AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-auth-base:17.0.0] C:\Users\mrmas\.gradle\caches\transforms-3\a538351d591910761797d8f9c710686a\transformed\jetified-play-services-auth-base-17.0.0\AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-identity:17.0.0] C:\Users\mrmas\.gradle\caches\transforms-3\c89beabcb57b373d491ac35a0f2df523\transformed\jetified-play-services-identity-17.0.0\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-identity:17.0.0] C:\Users\mrmas\.gradle\caches\transforms-3\c89beabcb57b373d491ac35a0f2df523\transformed\jetified-play-services-identity-17.0.0\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-maps:17.0.0] C:\Users\mrmas\.gradle\caches\transforms-3\235fb26791d0b7784506b383227a05f0\transformed\jetified-play-services-maps-17.0.0\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-maps:17.0.0] C:\Users\mrmas\.gradle\caches\transforms-3\235fb26791d0b7784506b383227a05f0\transformed\jetified-play-services-maps-17.0.0\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-base:17.1.0] C:\Users\mrmas\.gradle\caches\transforms-3\0c9122123e66b9effd0c86aa78743dee\transformed\jetified-play-services-base-17.1.0\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-base:17.1.0] C:\Users\mrmas\.gradle\caches\transforms-3\0c9122123e66b9effd0c86aa78743dee\transformed\jetified-play-services-base-17.1.0\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-tasks:17.0.0] C:\Users\mrmas\.gradle\caches\transforms-3\201646ab2518205ae6987aee74f3cb33\transformed\jetified-play-services-tasks-17.0.0\AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-tasks:17.0.0] C:\Users\mrmas\.gradle\caches\transforms-3\201646ab2518205ae6987aee74f3cb33\transformed\jetified-play-services-tasks-17.0.0\AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-places-placereport:17.0.0] C:\Users\mrmas\.gradle\caches\transforms-3\b5b3f8506fc0794bd37f17da4b56a237\transformed\jetified-play-services-places-placereport-17.0.0\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-places-placereport:17.0.0] C:\Users\mrmas\.gradle\caches\transforms-3\b5b3f8506fc0794bd37f17da4b56a237\transformed\jetified-play-services-places-placereport-17.0.0\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-basement:17.1.1] C:\Users\mrmas\.gradle\caches\transforms-3\d76c05e36b3e1583955f4758dd437935\transformed\jetified-play-services-basement-17.1.1\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-basement:17.1.1] C:\Users\mrmas\.gradle\caches\transforms-3\d76c05e36b3e1583955f4758dd437935\transformed\jetified-play-services-basement-17.1.1\AndroidManifest.xml:20:5-44
+MERGED from [androidx.fragment:fragment:1.2.0] C:\Users\mrmas\.gradle\caches\transforms-3\b8223b06afa2eb42f41c771bcfdf802b\transformed\fragment-1.2.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.fragment:fragment:1.2.0] C:\Users\mrmas\.gradle\caches\transforms-3\b8223b06afa2eb42f41c771bcfdf802b\transformed\fragment-1.2.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.loader:loader:1.0.0] C:\Users\mrmas\.gradle\caches\transforms-3\e7665e67ed92725123890cd5c4675a32\transformed\loader-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.loader:loader:1.0.0] C:\Users\mrmas\.gradle\caches\transforms-3\e7665e67ed92725123890cd5c4675a32\transformed\loader-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.viewpager:viewpager:1.0.0] C:\Users\mrmas\.gradle\caches\transforms-3\48cfbb676c8d8fdf095b0734ebc7ff16\transformed\viewpager-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.viewpager:viewpager:1.0.0] C:\Users\mrmas\.gradle\caches\transforms-3\48cfbb676c8d8fdf095b0734ebc7ff16\transformed\viewpager-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.activity:activity:1.1.0] C:\Users\mrmas\.gradle\caches\transforms-3\96e4b625cf86bf9b870d9cad328a5d28\transformed\jetified-activity-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.activity:activity:1.1.0] C:\Users\mrmas\.gradle\caches\transforms-3\96e4b625cf86bf9b870d9cad328a5d28\transformed\jetified-activity-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.customview:customview:1.0.0] C:\Users\mrmas\.gradle\caches\transforms-3\6018523bfe79b13331060b6a493f2c2b\transformed\customview-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.customview:customview:1.0.0] C:\Users\mrmas\.gradle\caches\transforms-3\6018523bfe79b13331060b6a493f2c2b\transformed\customview-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.core:core:1.7.0] C:\Users\mrmas\.gradle\caches\transforms-3\fb3270031bd107031c21c5dc13d9e5ef\transformed\core-1.7.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.core:core:1.7.0] C:\Users\mrmas\.gradle\caches\transforms-3\fb3270031bd107031c21c5dc13d9e5ef\transformed\core-1.7.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.2.0] C:\Users\mrmas\.gradle\caches\transforms-3\7126d8a1fc350ddab7477e33cd031288\transformed\lifecycle-livedata-2.2.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.2.0] C:\Users\mrmas\.gradle\caches\transforms-3\7126d8a1fc350ddab7477e33cd031288\transformed\lifecycle-livedata-2.2.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-process:2.2.0] C:\Users\mrmas\.gradle\caches\transforms-3\0fcb3a380d77ebf29041cbbb6f2e9be9\transformed\jetified-lifecycle-process-2.2.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-process:2.2.0] C:\Users\mrmas\.gradle\caches\transforms-3\0fcb3a380d77ebf29041cbbb6f2e9be9\transformed\jetified-lifecycle-process-2.2.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-service:2.2.0] C:\Users\mrmas\.gradle\caches\transforms-3\b2a8e07793141fd0e5c3d9abb1953f36\transformed\jetified-lifecycle-service-2.2.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-service:2.2.0] C:\Users\mrmas\.gradle\caches\transforms-3\b2a8e07793141fd0e5c3d9abb1953f36\transformed\jetified-lifecycle-service-2.2.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.3.1] C:\Users\mrmas\.gradle\caches\transforms-3\64c49fa4643332ede64efa754e8de1ea\transformed\lifecycle-runtime-2.3.1\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.3.1] C:\Users\mrmas\.gradle\caches\transforms-3\64c49fa4643332ede64efa754e8de1ea\transformed\lifecycle-runtime-2.3.1\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:1.0.0] C:\Users\mrmas\.gradle\caches\transforms-3\8d4086b5fdad97fc058a7f102eb249e8\transformed\jetified-lifecycle-viewmodel-savedstate-1.0.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:1.0.0] C:\Users\mrmas\.gradle\caches\transforms-3\8d4086b5fdad97fc058a7f102eb249e8\transformed\jetified-lifecycle-viewmodel-savedstate-1.0.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.2.0] C:\Users\mrmas\.gradle\caches\transforms-3\a87f6a2f9a4d984299efb6756b582b1a\transformed\lifecycle-livedata-core-2.2.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.2.0] C:\Users\mrmas\.gradle\caches\transforms-3\a87f6a2f9a4d984299efb6756b582b1a\transformed\lifecycle-livedata-core-2.2.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.arch.core:core-runtime:2.1.0] C:\Users\mrmas\.gradle\caches\transforms-3\22eb259cbf1a4aa11334cf36c7a52187\transformed\core-runtime-2.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.arch.core:core-runtime:2.1.0] C:\Users\mrmas\.gradle\caches\transforms-3\22eb259cbf1a4aa11334cf36c7a52187\transformed\core-runtime-2.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.savedstate:savedstate:1.0.0] C:\Users\mrmas\.gradle\caches\transforms-3\992afe8fa879fb6e37c36e3dc1f206d1\transformed\jetified-savedstate-1.0.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.savedstate:savedstate:1.0.0] C:\Users\mrmas\.gradle\caches\transforms-3\992afe8fa879fb6e37c36e3dc1f206d1\transformed\jetified-savedstate-1.0.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.2.0] C:\Users\mrmas\.gradle\caches\transforms-3\aa4e12b16e5256ca1604a444385db2bf\transformed\lifecycle-viewmodel-2.2.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.2.0] C:\Users\mrmas\.gradle\caches\transforms-3\aa4e12b16e5256ca1604a444385db2bf\transformed\lifecycle-viewmodel-2.2.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.tracing:tracing:1.0.0] C:\Users\mrmas\.gradle\caches\transforms-3\ed7ed0ca27edb40e377e214bdfbdd39a\transformed\jetified-tracing-1.0.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.tracing:tracing:1.0.0] C:\Users\mrmas\.gradle\caches\transforms-3\ed7ed0ca27edb40e377e214bdfbdd39a\transformed\jetified-tracing-1.0.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\mrmas\.gradle\caches\transforms-3\70f63520192deee43ee88ab45563d13d\transformed\versionedparcelable-1.1.1\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\mrmas\.gradle\caches\transforms-3\70f63520192deee43ee88ab45563d13d\transformed\versionedparcelable-1.1.1\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.annotation:annotation-experimental:1.1.0] C:\Users\mrmas\.gradle\caches\transforms-3\29c7b199d4646ee497ba13091e7b830d\transformed\jetified-annotation-experimental-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.annotation:annotation-experimental:1.1.0] C:\Users\mrmas\.gradle\caches\transforms-3\29c7b199d4646ee497ba13091e7b830d\transformed\jetified-annotation-experimental-1.1.0\AndroidManifest.xml:20:5-22:41
+INJECTED from C:\Users\mrmas\Downloads\bike_junction_customer\android\app\src\main\AndroidManifest.xml
+INJECTED from C:\Users\mrmas\Downloads\bike_junction_customer\android\app\src\main\AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from C:\Users\mrmas\Downloads\bike_junction_customer\android\app\src\main\AndroidManifest.xml
+		ADDED from C:\Users\mrmas\Downloads\bike_junction_customer\android\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\mrmas\Downloads\bike_junction_customer\android\app\src\main\AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from C:\Users\mrmas\Downloads\bike_junction_customer\android\app\src\main\AndroidManifest.xml
+		ADDED from C:\Users\mrmas\Downloads\bike_junction_customer\android\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\mrmas\Downloads\bike_junction_customer\android\app\src\main\AndroidManifest.xml
+uses-permission#android.permission.READ_PHONE_STATE
+ADDED from [:alt_sms_autofill] C:\Users\mrmas\Downloads\bike_junction_customer\build\alt_sms_autofill\intermediates\merged_manifest\release\AndroidManifest.xml:7:5-75
+	android:name
+		ADDED from [:alt_sms_autofill] C:\Users\mrmas\Downloads\bike_junction_customer\build\alt_sms_autofill\intermediates\merged_manifest\release\AndroidManifest.xml:7:22-72
+uses-permission#android.permission.READ_PHONE_NUMBERS
+ADDED from [:alt_sms_autofill] C:\Users\mrmas\Downloads\bike_junction_customer\build\alt_sms_autofill\intermediates\merged_manifest\release\AndroidManifest.xml:8:5-77
+	android:name
+		ADDED from [:alt_sms_autofill] C:\Users\mrmas\Downloads\bike_junction_customer\build\alt_sms_autofill\intermediates\merged_manifest\release\AndroidManifest.xml:8:22-74
+uses-permission#android.permission.RECEIVE_SMS
+ADDED from [:alt_sms_autofill] C:\Users\mrmas\Downloads\bike_junction_customer\build\alt_sms_autofill\intermediates\merged_manifest\release\AndroidManifest.xml:9:5-70
+	android:name
+		ADDED from [:alt_sms_autofill] C:\Users\mrmas\Downloads\bike_junction_customer\build\alt_sms_autofill\intermediates\merged_manifest\release\AndroidManifest.xml:9:22-67
+provider#io.flutter.plugins.imagepicker.ImagePickerFileProvider
+ADDED from [:image_picker] C:\Users\mrmas\Downloads\bike_junction_customer\build\image_picker\intermediates\merged_manifest\release\AndroidManifest.xml:11:9-19:20
+	android:grantUriPermissions
+		ADDED from [:image_picker] C:\Users\mrmas\Downloads\bike_junction_customer\build\image_picker\intermediates\merged_manifest\release\AndroidManifest.xml:15:13-47
+	android:authorities
+		ADDED from [:image_picker] C:\Users\mrmas\Downloads\bike_junction_customer\build\image_picker\intermediates\merged_manifest\release\AndroidManifest.xml:13:13-74
+	android:exported
+		ADDED from [:image_picker] C:\Users\mrmas\Downloads\bike_junction_customer\build\image_picker\intermediates\merged_manifest\release\AndroidManifest.xml:14:13-37
+	android:name
+		ADDED from [:image_picker] C:\Users\mrmas\Downloads\bike_junction_customer\build\image_picker\intermediates\merged_manifest\release\AndroidManifest.xml:12:13-82
+meta-data#android.support.FILE_PROVIDER_PATHS
+ADDED from [:image_picker] C:\Users\mrmas\Downloads\bike_junction_customer\build\image_picker\intermediates\merged_manifest\release\AndroidManifest.xml:16:13-18:75
+	android:resource
+		ADDED from [:image_picker] C:\Users\mrmas\Downloads\bike_junction_customer\build\image_picker\intermediates\merged_manifest\release\AndroidManifest.xml:18:17-72
+	android:name
+		ADDED from [:image_picker] C:\Users\mrmas\Downloads\bike_junction_customer\build\image_picker\intermediates\merged_manifest\release\AndroidManifest.xml:17:17-67
+activity#io.flutter.plugins.urllauncher.WebViewActivity
+ADDED from [:url_launcher_android] C:\Users\mrmas\Downloads\bike_junction_customer\build\url_launcher_android\intermediates\merged_manifest\release\AndroidManifest.xml:8:9-11:74
+	android:exported
+		ADDED from [:url_launcher_android] C:\Users\mrmas\Downloads\bike_junction_customer\build\url_launcher_android\intermediates\merged_manifest\release\AndroidManifest.xml:10:13-37
+	android:theme
+		ADDED from [:url_launcher_android] C:\Users\mrmas\Downloads\bike_junction_customer\build\url_launcher_android\intermediates\merged_manifest\release\AndroidManifest.xml:11:13-71
+	android:name
+		ADDED from [:url_launcher_android] C:\Users\mrmas\Downloads\bike_junction_customer\build\url_launcher_android\intermediates\merged_manifest\release\AndroidManifest.xml:9:13-74
+meta-data#com.google.android.gms.wallet.api.enabled
+ADDED from [:pay_android] C:\Users\mrmas\Downloads\bike_junction_customer\build\pay_android\intermediates\merged_manifest\release\AndroidManifest.xml:12:9-14:36
+	android:value
+		ADDED from [:pay_android] C:\Users\mrmas\Downloads\bike_junction_customer\build\pay_android\intermediates\merged_manifest\release\AndroidManifest.xml:14:13-33
+	android:name
+		ADDED from [:pay_android] C:\Users\mrmas\Downloads\bike_junction_customer\build\pay_android\intermediates\merged_manifest\release\AndroidManifest.xml:13:13-69
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from [:connectivity] C:\Users\mrmas\Downloads\bike_junction_customer\build\connectivity\intermediates\merged_manifest\release\AndroidManifest.xml:7:5-79
+MERGED from [com.google.android.gms:play-services-maps:17.0.0] C:\Users\mrmas\.gradle\caches\transforms-3\235fb26791d0b7784506b383227a05f0\transformed\jetified-play-services-maps-17.0.0\AndroidManifest.xml:23:5-79
+MERGED from [com.google.android.gms:play-services-maps:17.0.0] C:\Users\mrmas\.gradle\caches\transforms-3\235fb26791d0b7784506b383227a05f0\transformed\jetified-play-services-maps-17.0.0\AndroidManifest.xml:23:5-79
+	android:name
+		ADDED from [:connectivity] C:\Users\mrmas\Downloads\bike_junction_customer\build\connectivity\intermediates\merged_manifest\release\AndroidManifest.xml:7:22-76
+queries
+ADDED from [:upi_india] C:\Users\mrmas\Downloads\bike_junction_customer\build\upi_india\intermediates\merged_manifest\release\AndroidManifest.xml:7:5-13:15
+intent#action:name:android.intent.action.VIEW+data:scheme:upi
+ADDED from [:upi_india] C:\Users\mrmas\Downloads\bike_junction_customer\build\upi_india\intermediates\merged_manifest\release\AndroidManifest.xml:8:9-12:18
+action#android.intent.action.VIEW
+ADDED from [:upi_india] C:\Users\mrmas\Downloads\bike_junction_customer\build\upi_india\intermediates\merged_manifest\release\AndroidManifest.xml:9:13-65
+	android:name
+		ADDED from [:upi_india] C:\Users\mrmas\Downloads\bike_junction_customer\build\upi_india\intermediates\merged_manifest\release\AndroidManifest.xml:9:21-62
+data
+ADDED from [:upi_india] C:\Users\mrmas\Downloads\bike_junction_customer\build\upi_india\intermediates\merged_manifest\release\AndroidManifest.xml:11:13-42
+	android:scheme
+		ADDED from [:upi_india] C:\Users\mrmas\Downloads\bike_junction_customer\build\upi_india\intermediates\merged_manifest\release\AndroidManifest.xml:11:19-39
+activity#com.google.android.gms.auth.api.signin.internal.SignInHubActivity
+ADDED from [com.google.android.gms:play-services-auth:18.1.0] C:\Users\mrmas\.gradle\caches\transforms-3\59febd34e13de6b5a4a13523f9208f59\transformed\jetified-play-services-auth-18.1.0\AndroidManifest.xml:23:9-27:75
+	android:excludeFromRecents
+		ADDED from [com.google.android.gms:play-services-auth:18.1.0] C:\Users\mrmas\.gradle\caches\transforms-3\59febd34e13de6b5a4a13523f9208f59\transformed\jetified-play-services-auth-18.1.0\AndroidManifest.xml:25:13-46
+	android:exported
+		ADDED from [com.google.android.gms:play-services-auth:18.1.0] C:\Users\mrmas\.gradle\caches\transforms-3\59febd34e13de6b5a4a13523f9208f59\transformed\jetified-play-services-auth-18.1.0\AndroidManifest.xml:26:13-37
+	android:theme
+		ADDED from [com.google.android.gms:play-services-auth:18.1.0] C:\Users\mrmas\.gradle\caches\transforms-3\59febd34e13de6b5a4a13523f9208f59\transformed\jetified-play-services-auth-18.1.0\AndroidManifest.xml:27:13-72
+	android:name
+		ADDED from [com.google.android.gms:play-services-auth:18.1.0] C:\Users\mrmas\.gradle\caches\transforms-3\59febd34e13de6b5a4a13523f9208f59\transformed\jetified-play-services-auth-18.1.0\AndroidManifest.xml:24:13-93
+service#com.google.android.gms.auth.api.signin.RevocationBoundService
+ADDED from [com.google.android.gms:play-services-auth:18.1.0] C:\Users\mrmas\.gradle\caches\transforms-3\59febd34e13de6b5a4a13523f9208f59\transformed\jetified-play-services-auth-18.1.0\AndroidManifest.xml:33:9-37:51
+	android:exported
+		ADDED from [com.google.android.gms:play-services-auth:18.1.0] C:\Users\mrmas\.gradle\caches\transforms-3\59febd34e13de6b5a4a13523f9208f59\transformed\jetified-play-services-auth-18.1.0\AndroidManifest.xml:35:13-36
+	android:visibleToInstantApps
+		ADDED from [com.google.android.gms:play-services-auth:18.1.0] C:\Users\mrmas\.gradle\caches\transforms-3\59febd34e13de6b5a4a13523f9208f59\transformed\jetified-play-services-auth-18.1.0\AndroidManifest.xml:37:13-48
+	android:permission
+		ADDED from [com.google.android.gms:play-services-auth:18.1.0] C:\Users\mrmas\.gradle\caches\transforms-3\59febd34e13de6b5a4a13523f9208f59\transformed\jetified-play-services-auth-18.1.0\AndroidManifest.xml:36:13-107
+	android:name
+		ADDED from [com.google.android.gms:play-services-auth:18.1.0] C:\Users\mrmas\.gradle\caches\transforms-3\59febd34e13de6b5a4a13523f9208f59\transformed\jetified-play-services-auth-18.1.0\AndroidManifest.xml:34:13-89
+uses-feature#0x00020000
+ADDED from [com.google.android.gms:play-services-maps:17.0.0] C:\Users\mrmas\.gradle\caches\transforms-3\235fb26791d0b7784506b383227a05f0\transformed\jetified-play-services-maps-17.0.0\AndroidManifest.xml:26:5-28:35
+	android:glEsVersion
+		ADDED from [com.google.android.gms:play-services-maps:17.0.0] C:\Users\mrmas\.gradle\caches\transforms-3\235fb26791d0b7784506b383227a05f0\transformed\jetified-play-services-maps-17.0.0\AndroidManifest.xml:27:9-41
+	android:required
+		ADDED from [com.google.android.gms:play-services-maps:17.0.0] C:\Users\mrmas\.gradle\caches\transforms-3\235fb26791d0b7784506b383227a05f0\transformed\jetified-play-services-maps-17.0.0\AndroidManifest.xml:28:9-32
+uses-library#org.apache.http.legacy
+ADDED from [com.google.android.gms:play-services-maps:17.0.0] C:\Users\mrmas\.gradle\caches\transforms-3\235fb26791d0b7784506b383227a05f0\transformed\jetified-play-services-maps-17.0.0\AndroidManifest.xml:33:9-35:40
+	android:required
+		ADDED from [com.google.android.gms:play-services-maps:17.0.0] C:\Users\mrmas\.gradle\caches\transforms-3\235fb26791d0b7784506b383227a05f0\transformed\jetified-play-services-maps-17.0.0\AndroidManifest.xml:35:13-37
+	android:name
+		ADDED from [com.google.android.gms:play-services-maps:17.0.0] C:\Users\mrmas\.gradle\caches\transforms-3\235fb26791d0b7784506b383227a05f0\transformed\jetified-play-services-maps-17.0.0\AndroidManifest.xml:34:13-50
+activity#com.google.android.gms.common.api.GoogleApiActivity
+ADDED from [com.google.android.gms:play-services-base:17.1.0] C:\Users\mrmas\.gradle\caches\transforms-3\0c9122123e66b9effd0c86aa78743dee\transformed\jetified-play-services-base-17.1.0\AndroidManifest.xml:23:9-26:75
+	android:exported
+		ADDED from [com.google.android.gms:play-services-base:17.1.0] C:\Users\mrmas\.gradle\caches\transforms-3\0c9122123e66b9effd0c86aa78743dee\transformed\jetified-play-services-base-17.1.0\AndroidManifest.xml:25:13-37
+	android:theme
+		ADDED from [com.google.android.gms:play-services-base:17.1.0] C:\Users\mrmas\.gradle\caches\transforms-3\0c9122123e66b9effd0c86aa78743dee\transformed\jetified-play-services-base-17.1.0\AndroidManifest.xml:26:13-72
+	android:name
+		ADDED from [com.google.android.gms:play-services-base:17.1.0] C:\Users\mrmas\.gradle\caches\transforms-3\0c9122123e66b9effd0c86aa78743dee\transformed\jetified-play-services-base-17.1.0\AndroidManifest.xml:24:13-79
+meta-data#com.google.android.gms.version
+ADDED from [com.google.android.gms:play-services-basement:17.1.1] C:\Users\mrmas\.gradle\caches\transforms-3\d76c05e36b3e1583955f4758dd437935\transformed\jetified-play-services-basement-17.1.1\AndroidManifest.xml:23:9-25:69
+	android:value
+		ADDED from [com.google.android.gms:play-services-basement:17.1.1] C:\Users\mrmas\.gradle\caches\transforms-3\d76c05e36b3e1583955f4758dd437935\transformed\jetified-play-services-basement-17.1.1\AndroidManifest.xml:25:13-66
+	android:name
+		ADDED from [com.google.android.gms:play-services-basement:17.1.1] C:\Users\mrmas\.gradle\caches\transforms-3\d76c05e36b3e1583955f4758dd437935\transformed\jetified-play-services-basement-17.1.1\AndroidManifest.xml:24:13-58
+provider#androidx.lifecycle.ProcessLifecycleOwnerInitializer
+ADDED from [androidx.lifecycle:lifecycle-process:2.2.0] C:\Users\mrmas\.gradle\caches\transforms-3\0fcb3a380d77ebf29041cbbb6f2e9be9\transformed\jetified-lifecycle-process-2.2.0\AndroidManifest.xml:25:9-29:43
+	android:authorities
+		ADDED from [androidx.lifecycle:lifecycle-process:2.2.0] C:\Users\mrmas\.gradle\caches\transforms-3\0fcb3a380d77ebf29041cbbb6f2e9be9\transformed\jetified-lifecycle-process-2.2.0\AndroidManifest.xml:27:13-69
+	android:multiprocess
+		ADDED from [androidx.lifecycle:lifecycle-process:2.2.0] C:\Users\mrmas\.gradle\caches\transforms-3\0fcb3a380d77ebf29041cbbb6f2e9be9\transformed\jetified-lifecycle-process-2.2.0\AndroidManifest.xml:29:13-40
+	android:exported
+		ADDED from [androidx.lifecycle:lifecycle-process:2.2.0] C:\Users\mrmas\.gradle\caches\transforms-3\0fcb3a380d77ebf29041cbbb6f2e9be9\transformed\jetified-lifecycle-process-2.2.0\AndroidManifest.xml:28:13-37
+	android:name
+		ADDED from [androidx.lifecycle:lifecycle-process:2.2.0] C:\Users\mrmas\.gradle\caches\transforms-3\0fcb3a380d77ebf29041cbbb6f2e9be9\transformed\jetified-lifecycle-process-2.2.0\AndroidManifest.xml:26:13-79

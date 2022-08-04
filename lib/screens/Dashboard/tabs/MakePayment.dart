@@ -238,6 +238,7 @@ class _MakePaymentState extends State<MakePayment>
           ),
         ),
         displayUpiApps(),
+        SizedBox(height: 20),
         FutureBuilder(
             future: _transaction,
             builder:
@@ -247,6 +248,8 @@ class _MakePaymentState extends State<MakePayment>
                   return Center(
                     child: Text(
                       _upiErrorHandler(snapshot.error.runtimeType),
+                      style: TextStyle(
+                          color: Colors.red, fontStyle: FontStyle.italic),
                     ),
                   );
                 }
@@ -272,6 +275,7 @@ class _MakePaymentState extends State<MakePayment>
       setState(() {
         upiId = upiDetailsResponse.upiId!;
         accountHolderName = upiDetailsResponse.accountName!;
+        log("UPI Details: $upiId, $accountHolderName");
       });
     }
   }

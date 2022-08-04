@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'dart:developer';
+
 GetUpiDetailsResponseModel getUpiDetailsResponseModelFromJson(String str) =>
     GetUpiDetailsResponseModel.fromJson(json.decode(str));
 
@@ -18,7 +20,7 @@ class GetUpiDetailsResponseModel {
   String? accountName;
 
   factory GetUpiDetailsResponseModel.fromJson(Map<String, dynamic> json) {
-    if (json["status"] == 1) {
+    if (json["status"] == "1") {
       return GetUpiDetailsResponseModel(
         status: json["status"],
         upiId: json["upi"],

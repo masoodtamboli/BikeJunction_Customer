@@ -4,6 +4,7 @@ import 'package:bike_junction_customer/screens/AddPickUp/model/GetAllBrandsModel
 import 'package:bike_junction_customer/screens/AddPickUp/model/GetModelName.dart';
 import 'package:bike_junction_customer/screens/Dashboard/model/GetPickupDataModel.dart';
 import 'package:bike_junction_customer/screens/Dashboard/model/GetUpiDetailsModel.dart';
+import 'package:bike_junction_customer/screens/FeedBack/Model/AddFeedbackModel.dart';
 import 'package:bike_junction_customer/screens/LogIn/model/login_model.dart';
 import 'package:bike_junction_customer/screens/LogIn/model/verify_otp_model.dart';
 import 'package:bike_junction_customer/screens/RegistrationPage/model/registration_model.dart';
@@ -35,4 +36,7 @@ abstract class Repository {
 
   // Get Details of UPI
   Future<GetUpiDetailsResponseModel> getUpiDetails(url);
+
+  // Add Feedback
+  Future<AddFeedBackResponseModel> addFeedback(addFeedbackRequestModel, url);
 }

@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:developer';
 
+import 'package:alt_sms_autofill/alt_sms_autofill.dart';
 import 'package:bike_junction_customer/screens/Dashboard/DashboardPage.dart';
 import 'package:bike_junction_customer/screens/LogIn/contractor/login_contract.dart';
 import 'package:bike_junction_customer/screens/LogIn/contractor/verify_otp_contract.dart';
@@ -18,9 +19,10 @@ import 'package:bike_junction_customer/utils/Toast.dart';
 import 'package:bike_junction_customer/utils/sharedPreference/SharedPreference.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:pin_code_fields/pin_code_fields.dart';
+import 'package:flutter/services.dart';
+import 'package:otp_text_field/otp_text_field.dart';
+import 'package:otp_text_field/style.dart';
 import 'package:sizer/sizer.dart';
-import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 
 class LogInScreen extends StatefulWidget {
   const LogInScreen({Key? key}) : super(key: key);
@@ -33,6 +35,7 @@ class _LogInScreenState extends State<LogInScreen>
     implements LoginContract, VerifyOtpContract {
   //controllers
   TextEditingController mobileNumberController = TextEditingController();
+  OtpFieldController otpController = OtpFieldController();
   bool isTimeEnd = false;
   String validMobileMessage = MyStrings.validate_mobile_empty;
   bool isValidMobile = false;
@@ -52,6 +55,27 @@ class _LogInScreenState extends State<LogInScreen>
   _LogInScreenState() {
     loginPresenter = LoginPresenter(this);
     verifyOtpPresenter = VerifyOtpPresenter(this);
+  }
+
+  //Auto read OTP
+
+  Future<void> initSMSListener() async {
+    String? commingSms;
+    try {
+      commingSms = await AltSmsAutofill().listenForSms;
+    } on PlatformException {
+      commingSms = "FAILED";
+    }
+
+    if (!mounted) return;
+
+    setState(() {
+      otpController.set(commingSms!
+          .replaceAll(new RegExp(r'[^0-9]'), '')
+          .substring(0, 6)
+          .split(""));
+      // commingSms!.replaceAll(new RegExp(r'[^0-9]'), '').substring(0, 6);
+    });
   }
 
   login(String mobile) {
@@ -88,19 +112,17 @@ class _LogInScreenState extends State<LogInScreen>
     login(mobileNumberController.text.toString());
   }
 
-  late StreamController<ErrorAnimationType> errorController;
-  var onTapRecognizer;
-
   @override
   void initState() {
     super.initState();
     SharedPreference.init();
     checkInternet = CheckInternet();
-    onTapRecognizer = TapGestureRecognizer()
-      ..onTap = () {
-        Navigator.pop(context);
-      };
-    errorController = StreamController<ErrorAnimationType>();
+  }
+
+  @override
+  void dispose() {
+    AltSmsAutofill().unregisterListener();
+    super.dispose();
   }
 
   @override
@@ -221,6 +243,7 @@ class _LogInScreenState extends State<LogInScreen>
                     setState(() {
                       isTimeEnd = false;
                     });
+                    initSMSListener();
                     checkConnection();
                   },
                   child: Container(
@@ -300,20 +323,21 @@ class _LogInScreenState extends State<LogInScreen>
                     ),
                   ),
                   Padding(
-                      padding: EdgeInsets.only(right: 5.0, left: 5.0),
-                      child: OtpTextField(
-                        numberOfFields: 6,
-                        borderColor: MyColors.app_theme_color,
-                        keyboardType: TextInputType.number,
-                        showFieldAsBox: true,
-                        fieldWidth: 12.w,
-                        cursorColor: MyColors.app_theme_color,
-                        focusedBorderColor: MyColors.app_theme_color,
-                        decoration: InputDecoration(),
-                        onSubmit: (otp) {
-                          verifyOtp(otp);
-                        },
-                      )),
+                    padding: EdgeInsets.only(right: 5.0, left: 5.0),
+                    child: OTPTextField(
+                      controller: otpController,
+                      length: 6,
+                      width: MediaQuery.of(context).size.width,
+                      textFieldAlignment: MainAxisAlignment.spaceAround,
+                      fieldWidth: 45,
+                      fieldStyle: FieldStyle.box,
+                      outlineBorderRadius: 15,
+                      style: TextStyle(fontSize: 17),
+                      onCompleted: (pin) {
+                        verifyOtp(pin);
+                      },
+                    ),
+                  ),
 
                   SizedBox(
                     height: 10.0,

@@ -7,6 +7,7 @@ import 'package:bike_junction_customer/screens/AddPickUp/model/GetAllBrandsModel
 import 'package:bike_junction_customer/screens/AddPickUp/model/GetModelName.dart';
 import 'package:bike_junction_customer/screens/Dashboard/model/GetPickupDataModel.dart';
 import 'package:bike_junction_customer/screens/Dashboard/model/GetUpiDetailsModel.dart';
+import 'package:bike_junction_customer/screens/FeedBack/Model/AddFeedbackModel.dart';
 import 'package:bike_junction_customer/screens/LogIn/model/login_model.dart';
 import 'package:bike_junction_customer/screens/LogIn/model/verify_otp_model.dart';
 import 'package:bike_junction_customer/screens/RegistrationPage/model/registration_model.dart';
@@ -104,6 +105,25 @@ class ApiService implements Repository {
       }
       print(response.body.toString());
       return registrationModelFromJson(response.body.toString());
+    });
+  }
+
+  @override
+  Future<AddFeedBackResponseModel> addFeedback(addFeedbackRequestModel, url) {
+    var newUrl = Uri.parse(baseUrl + url);
+    print(newUrl);
+    print(addFeedbackRequestModelToJson(addFeedbackRequestModel));
+    return http
+        .post(newUrl,
+            headers: header,
+            body: addFeedbackRequestModelToJson(addFeedbackRequestModel))
+        .then((http.Response response) {
+      print(response.statusCode);
+      if (response.statusCode < 200 || response.statusCode > 300) {
+        throw Exception(exceptionMessage);
+      }
+      print(response.body.toString());
+      return addFeedBackResponseModelFromJson(response.body.toString());
     });
   }
 

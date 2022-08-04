@@ -31,12 +31,48 @@ class _CurrentPickUpsTabState extends State<CurrentPickUpsTab>
   late List<GetPickupData> getPickUpDataList;
   bool isDataFound = false;
 
+  showAlertDialog(BuildContext context) {
+    // set up the button
+    Widget okButton = TextButton(
+      child: Text(
+        "OK",
+        style: TextStyle(color: MyColors.app_theme_color),
+      ),
+      onPressed: () {
+        Navigator.of(context).pop();
+      },
+    );
+
+    // set up the AlertDialog
+    AlertDialog alert = AlertDialog(
+      title: Text("NOTE"),
+      content: Text(
+        "We also sell and buy second hand Bikes",
+        style: TextStyle(color: MyColors.grey_text_color),
+      ),
+      actions: [
+        okButton,
+      ],
+    );
+
+    // show the dialog
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (BuildContext context) {
+        return alert;
+      },
+    );
+  }
+
   @override
   initState() {
     checkInternet = CheckInternet();
     getPickUpDataList = [];
     super.initState();
     checkConnection();
+    WidgetsBinding.instance!
+        .addPostFrameCallback((_) => showAlertDialog(context));
   }
 
   _CurrentPickUpsTabState() {
