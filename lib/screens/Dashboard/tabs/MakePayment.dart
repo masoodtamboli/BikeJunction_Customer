@@ -259,7 +259,11 @@ class _MakePaymentState extends State<MakePayment>
                 _checkTxnStatus(_upiResponse.status ?? "N/A");
               }
               return Container();
-            })
+            }),
+        Spacer(),
+        Text("We also sell and buy second hand Bikes",
+            style: TextStyle(color: Colors.red, fontStyle: FontStyle.italic)),
+        Spacer(),
       ],
     );
   }

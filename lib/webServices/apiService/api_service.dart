@@ -4,6 +4,7 @@ import 'dart:developer';
 import 'package:bike_junction_customer/screens/AddPickUp/model/AddPickUpModel.dart';
 import 'package:bike_junction_customer/screens/AddPickUp/model/AllBranchModel.dart';
 import 'package:bike_junction_customer/screens/AddPickUp/model/GetAllBrandsModel.dart';
+import 'package:bike_junction_customer/screens/AddPickUp/model/GetAllPostalCodesModel.dart';
 import 'package:bike_junction_customer/screens/AddPickUp/model/GetModelName.dart';
 import 'package:bike_junction_customer/screens/Dashboard/model/GetPickupDataModel.dart';
 import 'package:bike_junction_customer/screens/Dashboard/model/GetUpiDetailsModel.dart';
@@ -73,7 +74,7 @@ class ApiService implements Repository {
   @override
   Future<AddPickUpResponseModel> addPickUp(addPickUpRequestModel, url) {
     var newUrl = Uri.parse(baseUrl + url);
-    print(newUrl);
+    log("$newUrl");
     print(addPickUpRequestModelToJson(addPickUpRequestModel));
     return http
         .post(newUrl,
@@ -82,6 +83,7 @@ class ApiService implements Repository {
         .then((http.Response response) {
       print(response.statusCode);
       if (response.statusCode < 200 || response.statusCode > 300) {
+        log(" Body ${response.body}");
         throw Exception(exceptionMessage);
       }
       print(response.body.toString());
@@ -137,6 +139,19 @@ class ApiService implements Repository {
       }
       print(response.body.toString());
       return getPickupDataModelFromJson(response.body.toString());
+    });
+  }
+
+  @override
+  Future<GetAllPostalCodesResponseModel> getAllPostalCodes(url) {
+    var newUrl = Uri.parse(baseUrl + url);
+
+    return http.post(newUrl).then((http.Response response) {
+      if (response.statusCode < 200 || response.statusCode > 300) {
+        throw Exception(exceptionMessage);
+      }
+      print(response.body.toString());
+      return getAllPostalCodesResponseModelFromJson(response.body.toString());
     });
   }
 

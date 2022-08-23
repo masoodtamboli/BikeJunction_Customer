@@ -87,18 +87,13 @@ class _RegistrationPageState extends State<RegistrationPage>
     return Scaffold(
       body: isLoading
           ? Center(child: CircularProgressIndicator.adaptive())
-          : SafeArea(
-              child: LayoutBuilder(
-                  builder: (BuildContext context, BoxConstraints constraints) {
-                return SingleChildScrollView(
-                  child: Container(
-                    height: constraints.maxHeight,
-                    width: constraints.maxWidth,
-                    color: MyColors.screen_background,
-                    child: mainBody(),
-                  ),
-                );
-              }),
+          : SingleChildScrollView(
+              child: Container(
+                width: 100.w,
+                height: 100.h,
+                color: MyColors.screen_background,
+                child: mainBody(),
+              ),
             ),
       floatingActionButton: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 8.0),
@@ -126,40 +121,38 @@ class _RegistrationPageState extends State<RegistrationPage>
   Widget mainBody() {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 2.h, vertical: 1.h),
-      child: SingleChildScrollView(
-        child: Column(
-          mainAxisSize: MainAxisSize.max,
-          // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            SizedBox(height: 5.h),
-            //Title
-            Column(
-              children: [
-                Image.asset(MyAssets.app_logo_circle),
-                Text(
-                  "Customer Registeration",
-                  style: TextStyle(
-                      fontSize: 18.sp,
-                      color: MyColors.app_theme_color,
-                      fontStyle: FontStyle.normal,
-                      fontWeight: FontWeight.bold),
-                ),
-              ],
-            ),
-            SizedBox(height: 5.h),
-            Text(
-              "Register to continue",
-              style: TextStyle(
-                  fontSize: 14.sp,
-                  color: MyColors.app_theme_color,
-                  fontStyle: FontStyle.normal,
-                  fontWeight: FontWeight.normal),
-            ),
-            SizedBox(height: 1.h),
-            registerFormWidget(),
-          ],
-        ),
+      child: Column(
+        mainAxisSize: MainAxisSize.max,
+        // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          SizedBox(height: 5.h),
+          //Title
+          Column(
+            children: [
+              Image.asset(MyAssets.app_logo_circle),
+              Text(
+                "Customer Registeration",
+                style: TextStyle(
+                    fontSize: 18.sp,
+                    color: MyColors.app_theme_color,
+                    fontStyle: FontStyle.normal,
+                    fontWeight: FontWeight.bold),
+              ),
+            ],
+          ),
+          SizedBox(height: 5.h),
+          Text(
+            "Register to continue",
+            style: TextStyle(
+                fontSize: 14.sp,
+                color: MyColors.app_theme_color,
+                fontStyle: FontStyle.normal,
+                fontWeight: FontWeight.normal),
+          ),
+          SizedBox(height: 1.h),
+          registerFormWidget(),
+        ],
       ),
     );
   }

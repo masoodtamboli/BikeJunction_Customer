@@ -470,7 +470,8 @@ class _LogInScreenState extends State<LogInScreen>
         SharedPreference.setCustomerId(
             int.parse(responseModel.data!.customerId!));
         SharedPreference.setBranchId(int.parse(responseModel.data!.branchId!));
-        SharedPreference.setCustomerMobile(responseModel.data!.customerMobile!);
+        SharedPreference.setCustomerMobile(
+            responseModel.data!.customerMobile!.substring(2, 12));
         SharedPreference.setCustomerAddress(
             responseModel.data!.customerAddress!);
         SharedPreference.setCustomerName(responseModel.data!.customerName!);

@@ -71,8 +71,8 @@ class _CurrentPickUpsTabState extends State<CurrentPickUpsTab>
     getPickUpDataList = [];
     super.initState();
     checkConnection();
-    WidgetsBinding.instance!
-        .addPostFrameCallback((_) => showAlertDialog(context));
+    // WidgetsBinding.instance!
+    //     .addPostFrameCallback((_) => showAlertDialog(context));
   }
 
   _CurrentPickUpsTabState() {

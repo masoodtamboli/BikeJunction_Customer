@@ -149,7 +149,7 @@ class AddPickUpRequestModel {
         "issues": issues,
         "services": services,
         "mobileno": mobileno,
-        "images": List<dynamic>.from(images!.map((x) => x)),
+        "images": List<String>.from(images!.map((x) => x)),
         "status": status,
         "branch_id": branchId,
       };
@@ -172,18 +172,35 @@ class AddPickUpResponseModel {
   dynamic error;
   Messages? messages;
 
-  factory AddPickUpResponseModel.fromJson(Map<String, dynamic> json) =>
-      AddPickUpResponseModel(
+  factory AddPickUpResponseModel.fromJson(Map<String, dynamic> json) {
+    if (json["status"] == 1) {
+      return AddPickUpResponseModel(
         status: json["status"],
         error: json["error"],
         messages: Messages.fromJson(json["messages"]),
       );
+    } else {
+      return AddPickUpResponseModel(
+        status: 500,
+        error: "Something went wrong!",
+      );
+    }
+  }
 
-  Map<String, dynamic> toJson() => {
+  Map<String, dynamic> toJson() {
+    if (status == 1) {
+      return {
         "status": status,
         "error": error,
         "messages": messages!.toJson(),
       };
+    } else {
+      return {
+        "status": status,
+        "error": error,
+      };
+    }
+  }
 }
 
 class Messages {

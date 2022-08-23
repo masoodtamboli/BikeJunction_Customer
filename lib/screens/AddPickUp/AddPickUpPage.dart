@@ -3,12 +3,15 @@ import 'dart:io';
 
 import 'package:bike_junction_customer/screens/AddPickUp/contract/AddPickUpContract.dart';
 import 'package:bike_junction_customer/screens/AddPickUp/contract/AllBranchContract.dart';
+import 'package:bike_junction_customer/screens/AddPickUp/contract/GetAllPostalContract.dart';
 import 'package:bike_junction_customer/screens/AddPickUp/model/AddPickUpModel.dart';
 import 'package:bike_junction_customer/screens/AddPickUp/model/AllBranchModel.dart';
 import 'package:bike_junction_customer/screens/AddPickUp/model/GetAllBrandsModel.dart';
+import 'package:bike_junction_customer/screens/AddPickUp/model/GetAllPostalCodesModel.dart';
 import 'package:bike_junction_customer/screens/AddPickUp/model/GetModelName.dart';
 import 'package:bike_junction_customer/screens/AddPickUp/presenter/AddPickUpPresenter.dart';
 import 'package:bike_junction_customer/screens/AddPickUp/presenter/AllBranchPresenter.dart';
+import 'package:bike_junction_customer/screens/AddPickUp/presenter/GetAllPostalCodePresenter.dart';
 import 'package:bike_junction_customer/utils/CheckConnection.dart';
 import 'package:bike_junction_customer/utils/Converter.dart';
 import 'package:bike_junction_customer/utils/FetchException.dart';
@@ -34,7 +37,7 @@ class AddPickUpPage extends StatefulWidget {
 }
 
 class _AddPickUpPageState extends State<AddPickUpPage>
-    implements AllBranchContract, AddPickUpContract {
+    implements AllBranchContract, AddPickUpContract, GetAllPostalCodeContract {
   //TextEditingController bikeNameController = TextEditingController();
   TextEditingController bikeNumberController = TextEditingController();
   TextEditingController addressToPickController = TextEditingController();
@@ -42,6 +45,7 @@ class _AddPickUpPageState extends State<AddPickUpPage>
   TextEditingController servicesController = TextEditingController();
   TextEditingController problemController = TextEditingController();
   TextEditingController selectBranchController = TextEditingController();
+  TextEditingController postalCodeController = TextEditingController();
 
   //TextEditingController bikeBrandController = TextEditingController();
 
@@ -76,24 +80,78 @@ class _AddPickUpPageState extends State<AddPickUpPage>
   late AddPickUpPresenter addPickUpPresenter;
   late String selectedBrand;
   late String selectedModel;
+  late GetAllPostalCodePresenter getAllPostalCodePresenter;
+  List<String> pinCodes = [];
 
   _AddPickUpPageState() {
     allBranchPresenter = AllBranchPresenter(this);
     addPickUpPresenter = AddPickUpPresenter(this);
+    getAllPostalCodePresenter = GetAllPostalCodePresenter(this);
   }
 
   late AddPickUpRequestModel addPickUpRequestModel;
+
+  showAlertDialog(BuildContext context) {
+    // set up the button
+    Widget okButton = TextButton(
+      child: Text(
+        "OK",
+        style: TextStyle(color: MyColors.app_theme_color),
+      ),
+      onPressed: () {
+        Navigator.of(context).pop();
+      },
+    );
+
+    // set up the AlertDialog
+    AlertDialog alert = AlertDialog(
+      title: Text("Error!"),
+      content: Text(
+        "Sorry we don't provide service in ${postalCodeController.text} area.",
+        style: TextStyle(color: MyColors.grey_text_color),
+      ),
+      actions: [
+        okButton,
+      ],
+    );
+
+    // show the dialog
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (BuildContext context) {
+        return alert;
+      },
+    );
+  }
+
+  checkPostalAvailability() {
+    if (pinCodes.contains(postalCodeController.text)) {
+      addPickUp();
+    } else {
+      showAlertDialog(context);
+    }
+  }
+
+  getAllPinCodes() {
+    setState(() {
+      isLoading = true;
+    });
+
+    getAllPostalCodePresenter.getAllPostalCodes("getallPins");
+  }
 
   addPickUp() {
     setState(() {
       isLoading = true;
     });
+    log("ID : ${SharedPreference.getCustomerId()}  Name: ${SharedPreference.getCustomerName()}  ");
     addPickUpRequestModel = AddPickUpRequestModel();
     addPickUpRequestModel.user_id = SharedPreference.getCustomerId().toString();
     addPickUpRequestModel.branchId = selectedBranchId;
     addPickUpRequestModel.name = SharedPreference.getCustomerName();
-    addPickUpRequestModel.bikenumber = bikeNumberController.text;
-    addPickUpRequestModel.address = addressToPickController.text;
+    addPickUpRequestModel.bikenumber = bikeNumberController.text.toString();
+    addPickUpRequestModel.address = addressToPickController.text.toString();
     addPickUpRequestModel.bikebrand = selectedBrand;
     addPickUpRequestModel.bikemodel = selectedModel;
     addPickUpRequestModel.date = finalEndDate;
@@ -127,6 +185,7 @@ class _AddPickUpPageState extends State<AddPickUpPage>
       if (value) {
         getBrand();
         getAllBranch();
+        getAllPinCodes();
       } else {
         ShowMessage().showToast("No Internet Connection");
       }
@@ -143,7 +202,8 @@ class _AddPickUpPageState extends State<AddPickUpPage>
     });
     var base64ImageExtension =
         " $selectedImgExtension,${Converter.convertIntoBase64(_image)}";
-    addImageIntoList(_image, base64ImageExtension);
+
+    addImageIntoList(_image, Converter.convertIntoBase64(_image));
   }
 
   Future pickImage() async {
@@ -163,9 +223,8 @@ class _AddPickUpPageState extends State<AddPickUpPage>
   addImageIntoList(File image, String base64) {
     setState(() {
       cameraList.add(image);
-      base64List.add(base64);
+      base64List.add("data:image/jpeg;base64," + base64);
     });
-    // }
   }
 
   @override
@@ -234,8 +293,7 @@ class _AddPickUpPageState extends State<AddPickUpPage>
         padding: const EdgeInsets.symmetric(horizontal: 8.0),
         child: GestureDetector(
           onTap: () {
-            addPickUp();
-            //Navigator.of(context).push(MaterialPageRoute(builder: (context)=> DashboardPage()));
+            checkPostalAvailability();
           },
           child: Container(
             height: 50,
@@ -431,6 +489,25 @@ class _AddPickUpPageState extends State<AddPickUpPage>
                   labelText: 'Pickup address',
                   prefixIcon: const Icon(
                     Icons.add_location_outlined,
+                    color: Colors.black,
+                  ),
+                ),
+              ),
+            ),
+            Container(
+              height: 80,
+              child: TextField(
+                controller: postalCodeController,
+                keyboardType: TextInputType.number,
+                autocorrect: false,
+                decoration: new InputDecoration(
+                  border: new OutlineInputBorder(
+                      borderSide:
+                          new BorderSide(color: MyColors.app_theme_color)),
+                  hintText: 'Postal Code',
+                  labelText: 'Postal Code',
+                  prefixIcon: const Icon(
+                    Icons.location_city,
                     color: Colors.black,
                   ),
                 ),
@@ -841,15 +918,17 @@ class _AddPickUpPageState extends State<AddPickUpPage>
   Future<void> GetAddressFromLatLong(Position position) async {
     List<Placemark> placemarks =
         await placemarkFromCoordinates(position.latitude, position.longitude);
-    print(placemarks);
+    log("Place Marks : $placemarks");
     Placemark place = placemarks[0];
-    String address = '${place.street}, ${place.subLocality}, ${place.locality},'
+    String address =
+        '${place.thoroughfare}, ${place.subLocality}, ${place.locality},'
         ' ${place.postalCode}, '
         '${place.country}';
-    print(address);
+    log("Address $address");
 
     setState(() {
-      addressToPickController.text = place.locality.toString();
+      addressToPickController.text = address.toString();
+      postalCodeController.text = place.postalCode.toString();
     });
   }
 
@@ -885,6 +964,30 @@ class _AddPickUpPageState extends State<AddPickUpPage>
     if (responseModel.status == 1) {
       allBrandModel.addAll(responseModel.data!);
       ShowMessage().showToast("Success");
+    }
+  }
+
+  @override
+  void getAllPostalCodeContractFailure(FetchException exception) {
+    setState(() {
+      isLoading = false;
+    });
+    log("$exception");
+    ShowMessage().showToast("Something went wrong!");
+  }
+
+  @override
+  void getAllPostalCodeContractSuccess(
+      GetAllPostalCodesResponseModel responseModel) {
+    setState(() {
+      isLoading = false;
+    });
+
+    if (responseModel.status == 1) {
+      responseModel.data!.forEach((element) {
+        pinCodes.add(element.pinCode!);
+      });
+      log("$pinCodes");
     }
   }
 }

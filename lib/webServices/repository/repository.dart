@@ -1,6 +1,8 @@
+import 'package:bike_junction_customer/screens/AddPickUp/contract/GetAllPostalContract.dart';
 import 'package:bike_junction_customer/screens/AddPickUp/model/AddPickUpModel.dart';
 import 'package:bike_junction_customer/screens/AddPickUp/model/AllBranchModel.dart';
 import 'package:bike_junction_customer/screens/AddPickUp/model/GetAllBrandsModel.dart';
+import 'package:bike_junction_customer/screens/AddPickUp/model/GetAllPostalCodesModel.dart';
 import 'package:bike_junction_customer/screens/AddPickUp/model/GetModelName.dart';
 import 'package:bike_junction_customer/screens/Dashboard/model/GetPickupDataModel.dart';
 import 'package:bike_junction_customer/screens/Dashboard/model/GetUpiDetailsModel.dart';
@@ -39,4 +41,7 @@ abstract class Repository {
 
   // Add Feedback
   Future<AddFeedBackResponseModel> addFeedback(addFeedbackRequestModel, url);
+
+  // Get All Postal Codes
+  Future<GetAllPostalCodesResponseModel> getAllPostalCodes(url);
 }
