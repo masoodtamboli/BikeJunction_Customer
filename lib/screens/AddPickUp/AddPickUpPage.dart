@@ -25,6 +25,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:http/http.dart';
 import 'package:upi_india/upi_india.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
@@ -60,11 +61,12 @@ class _AddPickUpPageState extends State<AddPickUpPage>
   bool isLoading = false;
   late CheckInternet checkInternet;
   var selectedBranchId;
-  var selectedBranchName;
+  String selectedBranchName = "No Branch Avaliable";
   var selectedBrandName;
   var selectedModelName;
   late AllBranchPresenter allBranchPresenter;
-  late List<AllBranchData> allBranchList;
+  Map<String, String> allBranchList = {};
+  List<String> newBranchList = [];
   late List<AllBrandData> allBrandModel;
   late List<ModelData> allModelName;
   late String sYear;
@@ -81,7 +83,9 @@ class _AddPickUpPageState extends State<AddPickUpPage>
   late String selectedBrand;
   late String selectedModel;
   late GetAllPostalCodePresenter getAllPostalCodePresenter;
-  List<String> pinCodes = [];
+  List<Datum> pinCodes = [];
+
+  bool isPinCodeValid = false;
 
   _AddPickUpPageState() {
     allBranchPresenter = AllBranchPresenter(this);
@@ -126,10 +130,21 @@ class _AddPickUpPageState extends State<AddPickUpPage>
   }
 
   checkPostalAvailability() {
-    if (pinCodes.contains(postalCodeController.text)) {
-      addPickUp();
-    } else {
+    bool flag = false;
+    for (int i = 0; i < pinCodes.length; i++) {
+      if (pinCodes[i].pinCode == postalCodeController.text.trim()) {
+        flag = true;
+        break;
+      }
+    }
+
+    if (!flag) {
       showAlertDialog(context);
+    } else {
+      setState(() {
+        isPinCodeValid = true;
+        setBranchBasedOnPincodes();
+      });
     }
   }
 
@@ -145,7 +160,6 @@ class _AddPickUpPageState extends State<AddPickUpPage>
     setState(() {
       isLoading = true;
     });
-    log("ID : ${SharedPreference.getCustomerId()}  Name: ${SharedPreference.getCustomerName()}  ");
     addPickUpRequestModel = AddPickUpRequestModel();
     addPickUpRequestModel.user_id = SharedPreference.getCustomerId().toString();
     addPickUpRequestModel.branchId = selectedBranchId;
@@ -230,7 +244,7 @@ class _AddPickUpPageState extends State<AddPickUpPage>
   @override
   void initState() {
     super.initState();
-    allBranchList = [];
+    allBranchList.clear();
     allBrandModel = [];
     allModelName = [];
 
@@ -247,6 +261,17 @@ class _AddPickUpPageState extends State<AddPickUpPage>
     Position position = await _getGeoLocationPosition();
     String location = 'Lat: ${position.latitude} , Long: ${position.longitude}';
     GetAddressFromLatLong(position);
+  }
+
+  void setBranchBasedOnPincodes() {
+    newBranchList.clear();
+
+    pinCodes.forEach((element) {
+      if (element.pinCode == postalCodeController.text.trim()) {
+        newBranchList.add(element.branchId!);
+      }
+    });
+    setState(() {});
   }
 
   @override
@@ -290,24 +315,42 @@ class _AddPickUpPageState extends State<AddPickUpPage>
               }),
       ),
       floatingActionButton: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 8.0),
-        child: GestureDetector(
-          onTap: () {
-            checkPostalAvailability();
-          },
-          child: Container(
-            height: 50,
-            width: MediaQuery.of(context).size.width,
-            color: MyColors.app_theme_color,
-            child: Center(
-              child: Text(
-                "Submit",
-                style: TextStyle(fontSize: 16, color: MyColors.white),
-              ),
+        padding: EdgeInsets.fromLTRB(15, 0, 15, 0),
+        child: Container(
+          width: MediaQuery.of(context).size.width,
+          height: MediaQuery.of(context).size.height * .06,
+          child: ElevatedButton(
+            onPressed: isPinCodeValid
+                ? () {
+                    addPickUp();
+                  }
+                : null,
+            child: Text(
+              "Submit",
+              style: TextStyle(fontSize: 16, color: MyColors.white),
+            ),
+            style: ButtonStyle(
+              backgroundColor: isPinCodeValid
+                  ? MaterialStateProperty.all(MyColors.app_theme_color)
+                  : MaterialStateProperty.all(MyColors.silver_color),
             ),
           ),
         ),
       ),
+      // floatingActionButton: Padding(
+      //   padding: const EdgeInsets.symmetric(horizontal: 8.0),
+      //   child: Container(
+      //     height: 50,
+      //     width: MediaQuery.of(context).size.width,
+      //     color: MyColors.app_theme_color,
+      //     child: Center(
+      //       child: Text(
+      //         "Submit",
+      //         style: TextStyle(fontSize: 16, color: MyColors.white),
+      //       ),
+      //     ),
+      //   ),
+      // ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
@@ -468,8 +511,8 @@ class _AddPickUpPageState extends State<AddPickUpPage>
                   border: new OutlineInputBorder(
                       borderSide:
                           new BorderSide(color: MyColors.app_theme_color)),
-                  hintText: 'Number',
-                  labelText: 'Number',
+                  hintText: 'Vehicle Number',
+                  labelText: 'Vehicle Number',
                   prefixIcon: const Icon(
                     Icons.electric_bike,
                     color: Colors.black,
@@ -478,25 +521,46 @@ class _AddPickUpPageState extends State<AddPickUpPage>
               ),
             ),
             Container(
-              height: 80,
+              height: 60,
               child: TextField(
+                onTap: () {
+                  setPickupAddress();
+                },
                 controller: addressToPickController,
                 decoration: new InputDecoration(
-                  border: new OutlineInputBorder(
-                      borderSide:
-                          new BorderSide(color: MyColors.app_theme_color)),
-                  hintText: 'Pickup address',
-                  labelText: 'Pickup address',
-                  prefixIcon: const Icon(
-                    Icons.add_location_outlined,
-                    color: Colors.black,
-                  ),
-                ),
+                    border: new OutlineInputBorder(
+                        borderSide:
+                            new BorderSide(color: MyColors.app_theme_color)),
+                    hintText: 'Pickup address',
+                    labelText: 'Pickup address',
+                    prefixIcon: const Icon(
+                      Icons.add_location_outlined,
+                      color: Colors.black,
+                    ),
+                    suffix: CircleAvatar(
+                      backgroundColor: MyColors.creamYellow,
+                      radius: MediaQuery.of(context).size.width * .04,
+                      child: IconButton(
+                          onPressed: () {
+                            setPickupAddress();
+                          },
+                          icon: Icon(
+                            Icons.location_on,
+                            size: MediaQuery.of(context).size.width * .04,
+                          )),
+                    )),
               ),
             ),
+            SizedBox(height: 20),
             Container(
               height: 80,
               child: TextField(
+                onChanged: (v) {
+                  setState(() {
+                    isPinCodeValid = false;
+                  });
+                },
+                maxLength: 6,
                 controller: postalCodeController,
                 keyboardType: TextInputType.number,
                 autocorrect: false,
@@ -510,32 +574,32 @@ class _AddPickUpPageState extends State<AddPickUpPage>
                     Icons.location_city,
                     color: Colors.black,
                   ),
-                ),
-              ),
-            ),
-            GestureDetector(
-              onTap: () {
-                _selectDateAndTime(context);
-              },
-              child: Container(
-                height: 80,
-                child: TextField(
-                  controller: pickUpTimeDateController,
-                  decoration: new InputDecoration(
-                    disabledBorder: new OutlineInputBorder(
-                        borderSide:
-                            new BorderSide(color: MyColors.app_theme_color)),
-                    border: new OutlineInputBorder(
-                        borderSide:
-                            new BorderSide(color: MyColors.app_theme_color)),
-                    hintText: 'Pick up date and time',
-                    enabled: false,
-                    labelText: 'Pick up date and time',
-                    prefixIcon: const Icon(
-                      Icons.date_range,
-                      color: Colors.black,
-                    ),
-                  ),
+                  suffix: isPinCodeValid
+                      ? CircleAvatar(
+                          backgroundColor: MyColors.creamGreen,
+                          radius: MediaQuery.of(context).size.width * .04,
+                          child: IconButton(
+                              onPressed: () {
+                                setPickupAddress();
+                              },
+                              icon: Icon(
+                                Icons.check,
+                                size: MediaQuery.of(context).size.width * .04,
+                              )),
+                        )
+                      : TextButton(
+                          style: ButtonStyle(
+                            backgroundColor:
+                                MaterialStateProperty.all(MyColors.creamYellow),
+                          ),
+                          onPressed: () {
+                            checkPostalAvailability();
+                          },
+                          child: Text(
+                            "Check Pin Avail...",
+                            style: TextStyle(color: MyColors.app_theme_color),
+                          ),
+                        ),
                 ),
               ),
             ),
@@ -573,6 +637,32 @@ class _AddPickUpPageState extends State<AddPickUpPage>
                 ),
               ),
             ),
+            GestureDetector(
+              onTap: () {
+                _selectDateAndTime(context);
+              },
+              child: Container(
+                height: 80,
+                child: TextField(
+                  controller: pickUpTimeDateController,
+                  decoration: new InputDecoration(
+                    disabledBorder: new OutlineInputBorder(
+                        borderSide:
+                            new BorderSide(color: MyColors.app_theme_color)),
+                    border: new OutlineInputBorder(
+                        borderSide:
+                            new BorderSide(color: MyColors.app_theme_color)),
+                    hintText: 'Pick up date and time',
+                    enabled: false,
+                    labelText: 'Pick up date and time',
+                    prefixIcon: const Icon(
+                      Icons.date_range,
+                      color: Colors.black,
+                    ),
+                  ),
+                ),
+              ),
+            ),
             Container(
               height: 60,
               decoration: BoxDecoration(
@@ -582,7 +672,7 @@ class _AddPickUpPageState extends State<AddPickUpPage>
                     ),
               ),
               width: MediaQuery.of(context).size.width,
-              child: DropdownButton<AllBranchData>(
+              child: DropdownButton(
                 hint: Padding(
                   padding: const EdgeInsets.only(left: 8.0, top: 5),
                   child: Text("Select branch"),
@@ -591,18 +681,18 @@ class _AddPickUpPageState extends State<AddPickUpPage>
                 underline: SizedBox(),
                 isExpanded: true,
                 // menuMaxHeight: 50,
-                items: allBranchList.map((AllBranchData index) {
-                  return DropdownMenuItem<AllBranchData>(
-                      value: index,
+                items: newBranchList.map((String item) {
+                  return DropdownMenuItem<String>(
+                      value: item,
                       child: Row(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          //Text(index.branchId!),
+                          //Text(item.branchId!),
                           Padding(
                             padding:
                                 EdgeInsets.only(left: 16, right: 8, top: 8),
                             child: Text(
-                              "${index.branchName}",
+                              allBranchList[item] ?? "",
                               style: TextStyle(fontSize: 16),
                             ),
                           )
@@ -610,15 +700,16 @@ class _AddPickUpPageState extends State<AddPickUpPage>
                       ));
                 }).toList(),
                 onChanged: (newValue) {
+                  log("=============== ${allBranchList[newValue]!}");
                   setState(() {
                     isBranchSelected = true;
-                    selectedBranchName = newValue;
-                    selectedBranchId = newValue!.branchId;
-                    print(selectedBranchId);
-                    print(selectedBranchName);
+                    selectedBranchName = allBranchList[newValue]!;
+                    selectedBranchId = newValue;
+                    log(selectedBranchId);
+                    log(selectedBranchName);
                   });
                 },
-                value: selectedBranchName,
+                value: selectedBranchId,
               ),
             ),
             SizedBox(
@@ -861,7 +952,9 @@ class _AddPickUpPageState extends State<AddPickUpPage>
       isLoading = false;
     });
     if (responseModel.status == 200) {
-      allBranchList.addAll(responseModel.data!);
+      responseModel.data!.forEach((e) {
+        allBranchList[e.branchId!] = e.branchName!;
+      });
       ShowMessage().showToast("Success");
     }
   }
@@ -984,10 +1077,7 @@ class _AddPickUpPageState extends State<AddPickUpPage>
     });
 
     if (responseModel.status == 1) {
-      responseModel.data!.forEach((element) {
-        pinCodes.add(element.pinCode!);
-      });
-      log("$pinCodes");
+      pinCodes.addAll(responseModel.data!);
     }
   }
 }
