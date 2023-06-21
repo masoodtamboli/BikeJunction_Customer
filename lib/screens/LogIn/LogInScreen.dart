@@ -191,7 +191,7 @@ class _LogInScreenState extends State<LogInScreen>
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  "Login with mobile...!",
+                  "Login with my mobile...!",
                   style: TextStyle(
                       fontSize: 18.sp,
                       color: MyColors.red,
